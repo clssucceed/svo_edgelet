@@ -1,0 +1,1590 @@
+test_pipeline 17100 118186.428352:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	    7fff8100ce3d __intel_pmu_enable_all.isra.9 ([kernel.kallsyms])
+	    7fff8100ceb0 intel_pmu_enable_all ([kernel.kallsyms])
+	    7fff81008ee3 x86_pmu_enable ([kernel.kallsyms])
+	    7fff811783a2 perf_pmu_enable ([kernel.kallsyms])
+	    7fff81006ee7 x86_pmu_commit_txn ([kernel.kallsyms])
+	    7fff81179167 group_sched_in ([kernel.kallsyms])
+	    7fff81179680 __perf_event_enable ([kernel.kallsyms])
+	    7fff81174eba remote_function ([kernel.kallsyms])
+	    7fff810ffe7c flush_smp_call_function_queue ([kernel.kallsyms])
+	    7fff81100863 generic_smp_call_function_single_interrupt ([kernel.kallsyms])
+	    7fff81050c07 smp_call_function_single_interrupt ([kernel.kallsyms])
+	    7fff818129a2 call_function_single_interrupt ([kernel.kallsyms])
+	            7ca0 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118186.428360:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	            7ca0 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118186.428363:        151 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	            7ca0 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118186.428366:      50411 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	            7ca0 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118186.428383:   23723519 cycles:pp: 
+	           166a7 [unknown] (/lib/x86_64-linux-gnu/libpng12.so.0.50.0)
+	a44070bf2e600000 [unknown] ([unknown])
+
+test_pipeline 17100 118186.436668: 194374887363144 cycles:pp: 
+	           94dd2 _ZN5Eigen8internal31generic_dense_assignment_kernelINS0_9evaluatorINS_6MatrixIdLi6ELi6ELi0ELi6ELi6EEEEENS2_INS_13CwiseBinaryOpINS0_17scalar_product_opIddEEKNS_7ProductINS3_IdLi6ELi1ELi0ELi6ELi1EEENS_9TransposeIKSA_EELi0EEEKNS_14CwiseNullaryOpINS0_18scalar_constant_opIdEEKS4_EEEEEENS0_13add_assign_opIddEELi0EE12assignPacketILi32ELi16ENS0_20eigen_packet_wrapperIU8__vectordEEEEvll.constprop.1021 (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           9666e _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17104 118186.438257:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	    7fff8100ce3d __intel_pmu_enable_all.isra.9 ([kernel.kallsyms])
+	    7fff8100ceb0 intel_pmu_enable_all ([kernel.kallsyms])
+	    7fff81008ee3 x86_pmu_enable ([kernel.kallsyms])
+	    7fff811783a2 perf_pmu_enable ([kernel.kallsyms])
+	    7fff811798ac perf_event_context_sched_in ([kernel.kallsyms])
+	    7fff81179d0a __perf_event_task_sched_in ([kernel.kallsyms])
+	    7fff810a860c finish_task_switch ([kernel.kallsyms])
+	    7fff8180d6b9 __schedule ([kernel.kallsyms])
+	    7fff8180dd15 schedule ([kernel.kallsyms])
+	    7fff8181083f do_nanosleep ([kernel.kallsyms])
+	    7fff810ed2db hrtimer_nanosleep ([kernel.kallsyms])
+	    7fff810ed3fc sys_nanosleep ([kernel.kallsyms])
+	    7fff81811576 entry_SYSCALL_64_fastpath ([kernel.kallsyms])
+	           c4d4d __GI___libc_nanosleep (/lib/x86_64-linux-gnu/libc-2.19.so)
+	        beef0100 [unknown] ([unknown])
+
+test_pipeline 17104 118186.438266:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           c4d4d __GI___libc_nanosleep (/lib/x86_64-linux-gnu/libc-2.19.so)
+	        beef0100 [unknown] ([unknown])
+
+test_pipeline 17104 118186.438269:        123 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           c4d4d __GI___libc_nanosleep (/lib/x86_64-linux-gnu/libc-2.19.so)
+	        beef0100 [unknown] ([unknown])
+
+test_pipeline 17104 118186.438271:      42891 cycles:pp: 
+	    7fff8100dc98 intel_pmu_handle_irq ([kernel.kallsyms])
+	    7fff8100717d perf_event_nmi_handler ([kernel.kallsyms])
+	    7fff81033331 nmi_handle ([kernel.kallsyms])
+	    7fff810338f6 default_do_nmi ([kernel.kallsyms])
+	    7fff81033a21 do_nmi ([kernel.kallsyms])
+	    7fff81813a54 end_repeat_nmi ([kernel.kallsyms])
+	    7fff8100ce3d __intel_pmu_enable_all.isra.9 ([kernel.kallsyms])
+	    7fff8100ceb0 intel_pmu_enable_all ([kernel.kallsyms])
+	    7fff81008ee3 x86_pmu_enable ([kernel.kallsyms])
+	    7fff811783a2 perf_pmu_enable ([kernel.kallsyms])
+	    7fff811798ac perf_event_context_sched_in ([kernel.kallsyms])
+	    7fff81179d0a __perf_event_task_sched_in ([kernel.kallsyms])
+	    7fff810a860c finish_task_switch ([kernel.kallsyms])
+	    7fff8180d6b9 __schedule ([kernel.kallsyms])
+	    7fff8180dd15 schedule ([kernel.kallsyms])
+	    7fff8181083f do_nanosleep ([kernel.kallsyms])
+	    7fff810ed2db hrtimer_nanosleep ([kernel.kallsyms])
+	    7fff810ed3fc sys_nanosleep ([kernel.kallsyms])
+	    7fff81811576 entry_SYSCALL_64_fastpath ([kernel.kallsyms])
+	           c4d4d __GI___libc_nanosleep (/lib/x86_64-linux-gnu/libc-2.19.so)
+	        beef0100 [unknown] ([unknown])
+
+test_pipeline 17104 118186.438289:   26186880 cycles:pp: 
+	         116f9c0 [unknown] (/usr/lib/nvidia-384/libnvidia-glcore.so.384.98)
+	        beef0100 [unknown] ([unknown])
+
+test_pipeline 17100 118186.440397:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	    7fff8100ce3d __intel_pmu_enable_all.isra.9 ([kernel.kallsyms])
+	    7fff8100ceb0 intel_pmu_enable_all ([kernel.kallsyms])
+	    7fff81008ee3 x86_pmu_enable ([kernel.kallsyms])
+	    7fff811783a2 perf_pmu_enable ([kernel.kallsyms])
+	    7fff811798ac perf_event_context_sched_in ([kernel.kallsyms])
+	    7fff81179d0a __perf_event_task_sched_in ([kernel.kallsyms])
+	    7fff810a860c finish_task_switch ([kernel.kallsyms])
+	    7fff8180d6b9 __schedule ([kernel.kallsyms])
+	    7fff8180dd15 schedule ([kernel.kallsyms])
+	    7fff8107b882 exit_to_usermode_loop ([kernel.kallsyms])
+	    7fff81005a16 prepare_exit_to_usermode ([kernel.kallsyms])
+	    7fff81812065 retint_user ([kernel.kallsyms])
+	           757ef _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70949 _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118186.440406:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           757ef _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70949 _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118186.440411:        119 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           757ef _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70949 _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118186.440415:      29816 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           757ef _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70949 _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118186.440428:   10184337 cycles:pp: 
+	           70753 _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118186.443868: 222142080410480 cycles:pp: 
+	           6b94b _ZN2cvL9cvt32f64fEPKfmPKhmPdmNS_5Size_IiEES4_ (/usr/local/lib/libopencv_core.so.2.4.13)
+
+test_pipeline 17103 118186.446450:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	    7fff8100ce3d __intel_pmu_enable_all.isra.9 ([kernel.kallsyms])
+	    7fff8100ceb0 intel_pmu_enable_all ([kernel.kallsyms])
+	    7fff81008ee3 x86_pmu_enable ([kernel.kallsyms])
+	    7fff811783a2 perf_pmu_enable ([kernel.kallsyms])
+	    7fff811798ac perf_event_context_sched_in ([kernel.kallsyms])
+	    7fff81179d0a __perf_event_task_sched_in ([kernel.kallsyms])
+	    7fff810a860c finish_task_switch ([kernel.kallsyms])
+	    7fff8180d6b9 __schedule ([kernel.kallsyms])
+	    7fff8180dd15 schedule ([kernel.kallsyms])
+	    7fff810fcac6 futex_wait_queue_me ([kernel.kallsyms])
+	    7fff810fd18d futex_wait ([kernel.kallsyms])
+	    7fff810ff405 do_futex ([kernel.kallsyms])
+	    7fff810ff8c1 sys_futex ([kernel.kallsyms])
+	    7fff81811576 entry_SYSCALL_64_fastpath ([kernel.kallsyms])
+	            c404 pthread_cond_wait@@GLIBC_2.3.2 (/lib/x86_64-linux-gnu/libpthread-2.19.so)
+	           7fd2f _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e533 _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118186.446460:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	            c404 pthread_cond_wait@@GLIBC_2.3.2 (/lib/x86_64-linux-gnu/libpthread-2.19.so)
+	           7fd2f _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e533 _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118186.446464:        104 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	            c404 pthread_cond_wait@@GLIBC_2.3.2 (/lib/x86_64-linux-gnu/libpthread-2.19.so)
+	           7fd2f _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e533 _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118186.446466:      35457 cycles:pp: 
+	    7fff810642b0 native_write_msr_safe ([kernel.kallsyms])
+	    7fff8100dcbd intel_pmu_handle_irq ([kernel.kallsyms])
+	    7fff8100717d perf_event_nmi_handler ([kernel.kallsyms])
+	    7fff81033331 nmi_handle ([kernel.kallsyms])
+	    7fff810338f6 default_do_nmi ([kernel.kallsyms])
+	    7fff81033a21 do_nmi ([kernel.kallsyms])
+	    7fff81813a54 end_repeat_nmi ([kernel.kallsyms])
+	    7fff8100ce3d __intel_pmu_enable_all.isra.9 ([kernel.kallsyms])
+	    7fff8100ceb0 intel_pmu_enable_all ([kernel.kallsyms])
+	    7fff81008ee3 x86_pmu_enable ([kernel.kallsyms])
+	    7fff811783a2 perf_pmu_enable ([kernel.kallsyms])
+	    7fff811798ac perf_event_context_sched_in ([kernel.kallsyms])
+	    7fff81179d0a __perf_event_task_sched_in ([kernel.kallsyms])
+	    7fff810a860c finish_task_switch ([kernel.kallsyms])
+	    7fff8180d6b9 __schedule ([kernel.kallsyms])
+	    7fff8180dd15 schedule ([kernel.kallsyms])
+	    7fff810fcac6 futex_wait_queue_me ([kernel.kallsyms])
+	    7fff810fd18d futex_wait ([kernel.kallsyms])
+	    7fff810ff405 do_futex ([kernel.kallsyms])
+	    7fff810ff8c1 sys_futex ([kernel.kallsyms])
+	    7fff81811576 entry_SYSCALL_64_fastpath ([kernel.kallsyms])
+	            c404 pthread_cond_wait@@GLIBC_2.3.2 (/lib/x86_64-linux-gnu/libpthread-2.19.so)
+	           7fd2f _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e533 _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118186.446481:   20371298 cycles:pp: 
+	           49ed0 _ZN2cv12_OutputArrayC1ERNS_3MatE@plt (/usr/local/lib/libopencv_core.so.2.4.13)
+	       300000003 [unknown] ([unknown])
+
+test_pipeline 17100 118186.448034:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	    7fff8100ce3d __intel_pmu_enable_all.isra.9 ([kernel.kallsyms])
+	    7fff8100ceb0 intel_pmu_enable_all ([kernel.kallsyms])
+	    7fff81008ee3 x86_pmu_enable ([kernel.kallsyms])
+	    7fff811783a2 perf_pmu_enable ([kernel.kallsyms])
+	    7fff811798ac perf_event_context_sched_in ([kernel.kallsyms])
+	    7fff81179d0a __perf_event_task_sched_in ([kernel.kallsyms])
+	    7fff810a860c finish_task_switch ([kernel.kallsyms])
+	    7fff8180d6b9 __schedule ([kernel.kallsyms])
+	    7fff8180dd15 schedule ([kernel.kallsyms])
+	    7fff81810a7b schedule_hrtimeout_range_clock ([kernel.kallsyms])
+	    7fff81810aa3 schedule_hrtimeout_range ([kernel.kallsyms])
+	    7fff81218389 poll_schedule_timeout ([kernel.kallsyms])
+	    7fff81219839 do_sys_poll ([kernel.kallsyms])
+	    7fff81219a65 sys_poll ([kernel.kallsyms])
+	    7fff81811576 entry_SYSCALL_64_fastpath ([kernel.kallsyms])
+	           f0c9d [unknown] (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118186.448044:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           f0c9d [unknown] (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118186.448048:        120 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           f0c9d [unknown] (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118186.448052:      31462 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           f0c9d [unknown] (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118186.448065:   11875053 cycles:pp: 
+	            b4e3 xcb_wait_for_reply (/usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+	         19ce768 [unknown] ([unknown])
+
+test_pipeline 17103 118186.474770: 194374983221635 cycles:pp: 
+	           dbaeb _ZN4fast23faster_corner_detect_10ILb1EEEvPKhiiisRSt6vectorINS_7fast_xyESaIS4_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           76fe7 _ZN3svo17feature_detection12FastDetector6detectEPNS_5FrameERKSt6vectorIN2cv3MatESaIS6_EEdRSt4listIPNS_7FeatureESaISD_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7dc56 _ZN3svo11DepthFilter15initializeSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e3eb _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17104 118186.486471:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	    7fff8100ce3d __intel_pmu_enable_all.isra.9 ([kernel.kallsyms])
+	    7fff8100ceb0 intel_pmu_enable_all ([kernel.kallsyms])
+	    7fff81008ee3 x86_pmu_enable ([kernel.kallsyms])
+	    7fff811783a2 perf_pmu_enable ([kernel.kallsyms])
+	    7fff811798ac perf_event_context_sched_in ([kernel.kallsyms])
+	    7fff81179d0a __perf_event_task_sched_in ([kernel.kallsyms])
+	    7fff810a860c finish_task_switch ([kernel.kallsyms])
+	    7fff8180d6b9 __schedule ([kernel.kallsyms])
+	    7fff8180dd15 schedule ([kernel.kallsyms])
+	    7fff8181083f do_nanosleep ([kernel.kallsyms])
+	    7fff810ed2db hrtimer_nanosleep ([kernel.kallsyms])
+	    7fff810ed3fc sys_nanosleep ([kernel.kallsyms])
+	    7fff81811576 entry_SYSCALL_64_fastpath ([kernel.kallsyms])
+	           c4d4d __GI___libc_nanosleep (/lib/x86_64-linux-gnu/libc-2.19.so)
+	           df13a _ZN11SLAM_VIEWER6Viewer3runEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           b1a60 [unknown] (/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+
+test_pipeline 17104 118186.486479:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           c4d4d __GI___libc_nanosleep (/lib/x86_64-linux-gnu/libc-2.19.so)
+	           df13a _ZN11SLAM_VIEWER6Viewer3runEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           b1a60 [unknown] (/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+
+test_pipeline 17104 118186.486483:        133 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           c4d4d __GI___libc_nanosleep (/lib/x86_64-linux-gnu/libc-2.19.so)
+	           df13a _ZN11SLAM_VIEWER6Viewer3runEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           b1a60 [unknown] (/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+
+test_pipeline 17104 118186.486486:      40005 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           c4d4d __GI___libc_nanosleep (/lib/x86_64-linux-gnu/libc-2.19.so)
+	           df13a _ZN11SLAM_VIEWER6Viewer3runEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           b1a60 [unknown] (/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+
+test_pipeline 17104 118186.486500:   18061901 cycles:pp: 
+	         125184f [unknown] (/usr/lib/nvidia-384/libnvidia-glcore.so.384.98)
+	        beef0100 [unknown] ([unknown])
+
+test_pipeline 17104 118186.496902:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	    7fff8100ce3d __intel_pmu_enable_all.isra.9 ([kernel.kallsyms])
+	    7fff8100ceb0 intel_pmu_enable_all ([kernel.kallsyms])
+	    7fff81008ee3 x86_pmu_enable ([kernel.kallsyms])
+	    7fff811783a2 perf_pmu_enable ([kernel.kallsyms])
+	    7fff811798ac perf_event_context_sched_in ([kernel.kallsyms])
+	    7fff81179d0a __perf_event_task_sched_in ([kernel.kallsyms])
+	    7fff810a860c finish_task_switch ([kernel.kallsyms])
+	    7fff8180d6b9 __schedule ([kernel.kallsyms])
+	    7fff8180dd15 schedule ([kernel.kallsyms])
+	    7fff8181083f do_nanosleep ([kernel.kallsyms])
+	    7fff810ed2db hrtimer_nanosleep ([kernel.kallsyms])
+	    7fff810ed3fc sys_nanosleep ([kernel.kallsyms])
+	    7fff81811576 entry_SYSCALL_64_fastpath ([kernel.kallsyms])
+	           c4d4d __GI___libc_nanosleep (/lib/x86_64-linux-gnu/libc-2.19.so)
+	               0 [unknown] ([unknown])
+
+test_pipeline 17104 118186.496907:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           c4d4d __GI___libc_nanosleep (/lib/x86_64-linux-gnu/libc-2.19.so)
+	               0 [unknown] ([unknown])
+
+test_pipeline 17104 118186.496910:        188 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           c4d4d __GI___libc_nanosleep (/lib/x86_64-linux-gnu/libc-2.19.so)
+	               0 [unknown] ([unknown])
+
+test_pipeline 17104 118186.496913:      72491 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           c4d4d __GI___libc_nanosleep (/lib/x86_64-linux-gnu/libc-2.19.so)
+	               0 [unknown] ([unknown])
+
+test_pipeline 17104 118186.496939:   38058050 cycles:pp: 
+	         1254b2b [unknown] (/usr/lib/nvidia-384/libnvidia-glcore.so.384.98)
+	    440404400080 [unknown] ([unknown])
+
+test_pipeline 17104 118186.517723:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	    7fff8100ce3d __intel_pmu_enable_all.isra.9 ([kernel.kallsyms])
+	    7fff8100ceb0 intel_pmu_enable_all ([kernel.kallsyms])
+	    7fff81008ee3 x86_pmu_enable ([kernel.kallsyms])
+	    7fff811783a2 perf_pmu_enable ([kernel.kallsyms])
+	    7fff811798ac perf_event_context_sched_in ([kernel.kallsyms])
+	    7fff81179d0a __perf_event_task_sched_in ([kernel.kallsyms])
+	    7fff810a860c finish_task_switch ([kernel.kallsyms])
+	    7fff8180d6b9 __schedule ([kernel.kallsyms])
+	    7fff8180dd15 schedule ([kernel.kallsyms])
+	    7fff8181083f do_nanosleep ([kernel.kallsyms])
+	    7fff810ed2db hrtimer_nanosleep ([kernel.kallsyms])
+	    7fff810ed3fc sys_nanosleep ([kernel.kallsyms])
+	    7fff81811576 entry_SYSCALL_64_fastpath ([kernel.kallsyms])
+	           c4d4d __GI___libc_nanosleep (/lib/x86_64-linux-gnu/libc-2.19.so)
+	               0 [unknown] ([unknown])
+
+test_pipeline 17104 118186.517729:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           c4d4d __GI___libc_nanosleep (/lib/x86_64-linux-gnu/libc-2.19.so)
+	               0 [unknown] ([unknown])
+
+test_pipeline 17104 118186.517732:        171 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           c4d4d __GI___libc_nanosleep (/lib/x86_64-linux-gnu/libc-2.19.so)
+	               0 [unknown] ([unknown])
+
+test_pipeline 17104 118186.517735:      67161 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           c4d4d __GI___libc_nanosleep (/lib/x86_64-linux-gnu/libc-2.19.so)
+	               0 [unknown] ([unknown])
+
+test_pipeline 17104 118186.517758:   36251358 cycles:pp: 
+	         12544b2 [unknown] (/usr/lib/nvidia-384/libnvidia-glcore.so.384.98)
+
+test_pipeline 17103 118186.736795:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	    7fff8100ce3d __intel_pmu_enable_all.isra.9 ([kernel.kallsyms])
+	    7fff8100ceb0 intel_pmu_enable_all ([kernel.kallsyms])
+	    7fff81008ee3 x86_pmu_enable ([kernel.kallsyms])
+	    7fff811783a2 perf_pmu_enable ([kernel.kallsyms])
+	    7fff811798ac perf_event_context_sched_in ([kernel.kallsyms])
+	    7fff81179d0a __perf_event_task_sched_in ([kernel.kallsyms])
+	    7fff810a860c finish_task_switch ([kernel.kallsyms])
+	    7fff8180d6b9 __schedule ([kernel.kallsyms])
+	    7fff8180dd15 schedule ([kernel.kallsyms])
+	    7fff810fcac6 futex_wait_queue_me ([kernel.kallsyms])
+	    7fff810fd18d futex_wait ([kernel.kallsyms])
+	    7fff810ff405 do_futex ([kernel.kallsyms])
+	    7fff810ff8c1 sys_futex ([kernel.kallsyms])
+	    7fff81811576 entry_SYSCALL_64_fastpath ([kernel.kallsyms])
+	            c404 pthread_cond_wait@@GLIBC_2.3.2 (/lib/x86_64-linux-gnu/libpthread-2.19.so)
+	           7159f _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fd2f _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e533 _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118186.736805:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	            c404 pthread_cond_wait@@GLIBC_2.3.2 (/lib/x86_64-linux-gnu/libpthread-2.19.so)
+	           7159f _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fd2f _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e533 _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118186.736808:        116 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	            c404 pthread_cond_wait@@GLIBC_2.3.2 (/lib/x86_64-linux-gnu/libpthread-2.19.so)
+	           7159f _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fd2f _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e533 _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118186.736810:      40185 cycles:pp: 
+	    7fff810642b0 native_write_msr_safe ([kernel.kallsyms])
+	    7fff8100dcbd intel_pmu_handle_irq ([kernel.kallsyms])
+	    7fff8100717d perf_event_nmi_handler ([kernel.kallsyms])
+	    7fff81033331 nmi_handle ([kernel.kallsyms])
+	    7fff810338f6 default_do_nmi ([kernel.kallsyms])
+	    7fff81033a21 do_nmi ([kernel.kallsyms])
+	    7fff81813a54 end_repeat_nmi ([kernel.kallsyms])
+	    7fff8100ce3d __intel_pmu_enable_all.isra.9 ([kernel.kallsyms])
+	    7fff8100ceb0 intel_pmu_enable_all ([kernel.kallsyms])
+	    7fff81008ee3 x86_pmu_enable ([kernel.kallsyms])
+	    7fff811783a2 perf_pmu_enable ([kernel.kallsyms])
+	    7fff811798ac perf_event_context_sched_in ([kernel.kallsyms])
+	    7fff81179d0a __perf_event_task_sched_in ([kernel.kallsyms])
+	    7fff810a860c finish_task_switch ([kernel.kallsyms])
+	    7fff8180d6b9 __schedule ([kernel.kallsyms])
+	    7fff8180dd15 schedule ([kernel.kallsyms])
+	    7fff810fcac6 futex_wait_queue_me ([kernel.kallsyms])
+	    7fff810fd18d futex_wait ([kernel.kallsyms])
+	    7fff810ff405 do_futex ([kernel.kallsyms])
+	    7fff810ff8c1 sys_futex ([kernel.kallsyms])
+	    7fff81811576 entry_SYSCALL_64_fastpath ([kernel.kallsyms])
+	            c404 pthread_cond_wait@@GLIBC_2.3.2 (/lib/x86_64-linux-gnu/libpthread-2.19.so)
+	           7159f _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fd2f _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e533 _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118186.736826:   21516380 cycles:pp: 
+	          1637fb _ZNK2cv12_OutputArray6createEiPKiiibi (/usr/local/lib/libopencv_core.so.2.4.13)
+	               0 [unknown] ([unknown])
+
+test_pipeline 17103 118186.758692: 194374932128982 cycles:pp: 
+	           ddf78 cvUndistortPoints (/usr/local/lib/libopencv_imgproc.so.2.4.13)
+
+test_pipeline 17100 118186.983189:   53037371 cycles:pp: 
+	           96183 _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118187.001882: 26041985159654 cycles:pp: 
+	           166b1 [unknown] (/lib/x86_64-linux-gnu/libpng12.so.0.50.0)
+	39407b83aae00000 [unknown] ([unknown])
+
+test_pipeline 17100 118187.016755: 1109639483 cycles:pp: 
+	    7fffc00165dc ahci_pmp_qc_defer ([kernel.kallsyms])
+	    7fff815c573c ata_scsi_queuecmd ([kernel.kallsyms])
+	    7fff8159f51b scsi_dispatch_cmd ([kernel.kallsyms])
+	    7fff815a249e scsi_request_fn ([kernel.kallsyms])
+	    7fff813af2d3 __blk_run_queue ([kernel.kallsyms])
+	    7fff813af35a queue_unplugged ([kernel.kallsyms])
+	    7fff813b46d0 blk_flush_plug_list ([kernel.kallsyms])
+	    7fff813b4abc blk_finish_plug ([kernel.kallsyms])
+	    7fff81194978 __do_page_cache_readahead ([kernel.kallsyms])
+	    7fff81194b2a ondemand_readahead ([kernel.kallsyms])
+	    7fff81194c9c page_cache_async_readahead ([kernel.kallsyms])
+	    7fff81189bc9 generic_file_read_iter ([kernel.kallsyms])
+	    7fff81204195 new_sync_read ([kernel.kallsyms])
+	    7fff812041e7 __vfs_read ([kernel.kallsyms])
+	    7fff8120478f vfs_read ([kernel.kallsyms])
+	    7fff81205566 sys_read ([kernel.kallsyms])
+	    7fff81811576 entry_SYSCALL_64_fastpath ([kernel.kallsyms])
+	           ef37d __GI___libc_read (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118187.537371: 1437393064 cycles:pp: 
+	           9664a _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17104 118187.611082: 222142986323126 cycles:pp: 
+	         11b8bd2 [unknown] (/usr/lib/nvidia-384/libnvidia-glcore.so.384.98)
+	       1beef0100 [unknown] ([unknown])
+
+test_pipeline 17103 118187.716608:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	    7fff8100ce3d __intel_pmu_enable_all.isra.9 ([kernel.kallsyms])
+	    7fff8100ceb0 intel_pmu_enable_all ([kernel.kallsyms])
+	    7fff81008ee3 x86_pmu_enable ([kernel.kallsyms])
+	    7fff811783a2 perf_pmu_enable ([kernel.kallsyms])
+	    7fff811798ac perf_event_context_sched_in ([kernel.kallsyms])
+	    7fff81179d0a __perf_event_task_sched_in ([kernel.kallsyms])
+	    7fff810a860c finish_task_switch ([kernel.kallsyms])
+	    7fff8180d6b9 __schedule ([kernel.kallsyms])
+	    7fff8180dd15 schedule ([kernel.kallsyms])
+	    7fff810fcac6 futex_wait_queue_me ([kernel.kallsyms])
+	    7fff810fd18d futex_wait ([kernel.kallsyms])
+	    7fff810ff405 do_futex ([kernel.kallsyms])
+	    7fff810ff8c1 sys_futex ([kernel.kallsyms])
+	    7fff81811576 entry_SYSCALL_64_fastpath ([kernel.kallsyms])
+	            c404 pthread_cond_wait@@GLIBC_2.3.2 (/lib/x86_64-linux-gnu/libpthread-2.19.so)
+	           7159f _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fd2f _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e533 _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118187.716617:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	            c404 pthread_cond_wait@@GLIBC_2.3.2 (/lib/x86_64-linux-gnu/libpthread-2.19.so)
+	           7159f _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fd2f _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e533 _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118187.716620:        124 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	            c404 pthread_cond_wait@@GLIBC_2.3.2 (/lib/x86_64-linux-gnu/libpthread-2.19.so)
+	           7159f _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fd2f _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e533 _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118187.716622:      42527 cycles:pp: 
+	    7fff8100dc87 intel_pmu_handle_irq ([kernel.kallsyms])
+	    7fff8100717d perf_event_nmi_handler ([kernel.kallsyms])
+	    7fff81033331 nmi_handle ([kernel.kallsyms])
+	    7fff810338f6 default_do_nmi ([kernel.kallsyms])
+	    7fff81033a21 do_nmi ([kernel.kallsyms])
+	    7fff81813a54 end_repeat_nmi ([kernel.kallsyms])
+	    7fff8100ce3d __intel_pmu_enable_all.isra.9 ([kernel.kallsyms])
+	    7fff8100ceb0 intel_pmu_enable_all ([kernel.kallsyms])
+	    7fff81008ee3 x86_pmu_enable ([kernel.kallsyms])
+	    7fff811783a2 perf_pmu_enable ([kernel.kallsyms])
+	    7fff811798ac perf_event_context_sched_in ([kernel.kallsyms])
+	    7fff81179d0a __perf_event_task_sched_in ([kernel.kallsyms])
+	    7fff810a860c finish_task_switch ([kernel.kallsyms])
+	    7fff8180d6b9 __schedule ([kernel.kallsyms])
+	    7fff8180dd15 schedule ([kernel.kallsyms])
+	    7fff810fcac6 futex_wait_queue_me ([kernel.kallsyms])
+	    7fff810fd18d futex_wait ([kernel.kallsyms])
+	    7fff810ff405 do_futex ([kernel.kallsyms])
+	    7fff810ff8c1 sys_futex ([kernel.kallsyms])
+	    7fff81811576 entry_SYSCALL_64_fastpath ([kernel.kallsyms])
+	            c404 pthread_cond_wait@@GLIBC_2.3.2 (/lib/x86_64-linux-gnu/libpthread-2.19.so)
+	           7159f _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fd2f _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e533 _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118187.716892:   24246277 cycles:pp: 
+	           7f8a2 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118187.740976: 194373679044652 cycles:pp: 
+	    7fff810850f9 __do_softirq ([kernel.kallsyms])
+	    7fff81085575 irq_exit ([kernel.kallsyms])
+	    7fff81813f66 __irqentry_text_start ([kernel.kallsyms])
+	    7fff81812042 ret_from_intr ([kernel.kallsyms])
+	           7be4e cvConvertScale (/usr/local/lib/libopencv_core.so.2.4.13)
+	       100000001 [unknown] ([unknown])
+
+test_pipeline 17104 118187.807080: 148818362431214 cycles:pp: 
+	         12cbd40 [unknown] (/usr/lib/nvidia-384/libnvidia-glcore.so.384.98)
+	           df1fe _ZN11SLAM_VIEWER6Viewer3runEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           b1a60 [unknown] (/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19)
+
+test_pipeline 17100 118188.031906:   37874664 cycles:pp: 
+	            8881 _ZNK5Eigen14QuaternionBaseINS_10QuaternionIdLi0EEEE16_transformVectorERKNS_6MatrixIdLi3ELi1ELi0ELi3ELi1EEE (/home/dji/Sophus/build/libSophus.so)
+	3f646dda42f2973c [unknown] ([unknown])
+
+test_pipeline 17100 118188.044701: 34014002578086 cycles:pp: 
+	           94ddb _ZN5Eigen8internal31generic_dense_assignment_kernelINS0_9evaluatorINS_6MatrixIdLi6ELi6ELi0ELi6ELi6EEEEENS2_INS_13CwiseBinaryOpINS0_17scalar_product_opIddEEKNS_7ProductINS3_IdLi6ELi1ELi0ELi6ELi1EEENS_9TransposeIKSA_EELi0EEEKNS_14CwiseNullaryOpINS0_18scalar_constant_opIdEEKS4_EEEEEENS0_13add_assign_opIddEELi0EE12assignPacketILi32ELi16ENS0_20eigen_packet_wrapperIU8__vectordEEEEvll.constprop.1021 (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           966a4 _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17104 118188.357356: 194375046936318 cycles:pp: 
+	         12b33ad [unknown] (/usr/lib/nvidia-384/libnvidia-glcore.so.384.98)
+	            3003 [unknown] ([unknown])
+	3f80000000000000 [unknown] ([unknown])
+
+test_pipeline 17103 118188.645242:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	    7fff8100ce3d __intel_pmu_enable_all.isra.9 ([kernel.kallsyms])
+	    7fff8100ceb0 intel_pmu_enable_all ([kernel.kallsyms])
+	    7fff81008ee3 x86_pmu_enable ([kernel.kallsyms])
+	    7fff811783a2 perf_pmu_enable ([kernel.kallsyms])
+	    7fff811798ac perf_event_context_sched_in ([kernel.kallsyms])
+	    7fff81179d0a __perf_event_task_sched_in ([kernel.kallsyms])
+	    7fff810a860c finish_task_switch ([kernel.kallsyms])
+	    7fff8180d6b9 __schedule ([kernel.kallsyms])
+	    7fff8180dd15 schedule ([kernel.kallsyms])
+	    7fff8107b882 exit_to_usermode_loop ([kernel.kallsyms])
+	    7fff81005a16 prepare_exit_to_usermode ([kernel.kallsyms])
+	    7fff81812065 retint_user ([kernel.kallsyms])
+	           7111c _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118188.645248:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           7111c _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118188.645250:        193 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           7111c _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118188.645252:      91746 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           7111c _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118188.645291:   71366991 cycles:pp: 
+	           8f221 _ZNK3svo13PinholeCamera9world2camERKN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118188.764446: 130216322954474 cycles:pp: 
+	           712fb _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17100 118189.019278:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	    7fff8100ce3d __intel_pmu_enable_all.isra.9 ([kernel.kallsyms])
+	    7fff8100ceb0 intel_pmu_enable_all ([kernel.kallsyms])
+	    7fff81008ee3 x86_pmu_enable ([kernel.kallsyms])
+	    7fff811783a2 perf_pmu_enable ([kernel.kallsyms])
+	    7fff811798ac perf_event_context_sched_in ([kernel.kallsyms])
+	    7fff81179d0a __perf_event_task_sched_in ([kernel.kallsyms])
+	    7fff810a860c finish_task_switch ([kernel.kallsyms])
+	    7fff8180d6b9 __schedule ([kernel.kallsyms])
+	    7fff8180dd15 schedule ([kernel.kallsyms])
+	    7fff81810a7b schedule_hrtimeout_range_clock ([kernel.kallsyms])
+	    7fff81810aa3 schedule_hrtimeout_range ([kernel.kallsyms])
+	    7fff81218389 poll_schedule_timeout ([kernel.kallsyms])
+	    7fff81219839 do_sys_poll ([kernel.kallsyms])
+	    7fff81219a65 sys_poll ([kernel.kallsyms])
+	    7fff81811576 entry_SYSCALL_64_fastpath ([kernel.kallsyms])
+	           f0c9d [unknown] (/lib/x86_64-linux-gnu/libc-2.19.so)
+	           291ee g_signal_emit_valist (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.4002.0)
+
+test_pipeline 17100 118189.019288:          1 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           f0c9d [unknown] (/lib/x86_64-linux-gnu/libc-2.19.so)
+	           291ee g_signal_emit_valist (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.4002.0)
+
+test_pipeline 17100 118189.019293:        115 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           f0c9d [unknown] (/lib/x86_64-linux-gnu/libc-2.19.so)
+	           291ee g_signal_emit_valist (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.4002.0)
+
+test_pipeline 17100 118189.019296:      31585 cycles:pp: 
+	    7fff810642b8 native_write_msr_safe ([kernel.kallsyms])
+	           f0c9d [unknown] (/lib/x86_64-linux-gnu/libc-2.19.so)
+	           291ee g_signal_emit_valist (/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.4002.0)
+
+test_pipeline 17100 118189.019309:   13124534 cycles:pp: 
+	           3425c [unknown] (/usr/lib/x86_64-linux-gnu/libgdk-x11-2.0.so.0.2400.23)
+
+test_pipeline 17104 118189.031322: 1580821358 cycles:pp: 
+	    7fff810c7b1b cpuacct_charge ([kernel.kallsyms])
+	    7fff810b530f update_curr ([kernel.kallsyms])
+	    7fff810b5699 dequeue_entity ([kernel.kallsyms])
+	    7fff810b7b8c dequeue_task_fair ([kernel.kallsyms])
+	    7fff810a9cae deactivate_task ([kernel.kallsyms])
+	    7fff8180d9a9 __schedule ([kernel.kallsyms])
+	    7fff8180dd15 schedule ([kernel.kallsyms])
+	    7fff8181083f do_nanosleep ([kernel.kallsyms])
+	    7fff810ed2db hrtimer_nanosleep ([kernel.kallsyms])
+	    7fff810ed3fc sys_nanosleep ([kernel.kallsyms])
+	    7fff81811576 entry_SYSCALL_64_fastpath ([kernel.kallsyms])
+	           c4d4d __GI___libc_nanosleep (/lib/x86_64-linux-gnu/libc-2.19.so)
+	               0 [unknown] ([unknown])
+	           97710 _ZN8pangolin4ViewD0Ev (/usr/local/lib/libpangolin.so)
+	4810c08348fb8948 [unknown] ([unknown])
+
+test_pipeline 17100 118189.061028:   33767328 cycles:pp: 
+	            7c80 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118189.071694: 34013999682026 cycles:pp: 
+	           de0d1 cvUndistortPoints (/usr/local/lib/libopencv_imgproc.so.2.4.13)
+
+test_pipeline 17100 118189.100713: 222142325245366 cycles:pp: 
+	            7c23 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118189.824306:   48172273 cycles:pp: 
+	          13c279 _ZNK2cv20CvtColorLoop_InvokerINS_8Gray2RGBIhEEEclERKNS_5RangeE (/usr/local/lib/libopencv_imgproc.so.2.4.13)
+	    7f4f47181c70 [unknown] ([unknown])
+
+test_pipeline 17100 118189.841713: 26041982610446 cycles:pp: 
+	           757fc _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70949 _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118190.578371:   52824036 cycles:pp: 
+	            7c80 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118190.596807: 29762265036041 cycles:pp: 
+	            96f3 inflate (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118191.350602:   31789766 cycles:pp: 
+	           757ea _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70949 _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118191.387844: 44426443405230 cycles:pp: 
+	           94e48 _ZN5Eigen8internal31generic_dense_assignment_kernelINS0_9evaluatorINS_6MatrixIdLi6ELi6ELi0ELi6ELi6EEEEENS2_INS_13CwiseBinaryOpINS0_17scalar_product_opIddEEKNS_7ProductINS3_IdLi6ELi1ELi0ELi6ELi1EEENS_9TransposeIKSA_EELi0EEEKNS_14CwiseNullaryOpINS0_18scalar_constant_opIdEEKS4_EEEEEENS0_13add_assign_opIddEELi0EE12assignPacketILi32ELi16ENS0_20eigen_packet_wrapperIU8__vectordEEEEvll.constprop.1020 (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           966ec _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118191.953999:   36334920 cycles:pp: 
+	           afd4d _ZN2cvL9ThickLineERNS_3MatENS_6Point_IiEES3_PKviiii (/usr/local/lib/libopencv_core.so.2.4.13)
+	               0 [unknown] ([unknown])
+
+test_pipeline 17100 118191.966654: 34014001662195 cycles:pp: 
+	           94e11 _ZN5Eigen8internal31generic_dense_assignment_kernelINS0_9evaluatorINS_6MatrixIdLi6ELi6ELi0ELi6ELi6EEEEENS2_INS_13CwiseBinaryOpINS0_17scalar_product_opIddEEKNS_7ProductINS3_IdLi6ELi1ELi0ELi6ELi1EEENS_9TransposeIKSA_EELi0EEEKNS_14CwiseNullaryOpINS0_18scalar_constant_opIdEEKS4_EEEEEENS0_13add_assign_opIddEELi0EE12assignPacketILi32ELi16ENS0_20eigen_packet_wrapperIU8__vectordEEEEvll.constprop.1022 (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96626 _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118192.053878:   30312859 cycles:pp: 
+	            7c89 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118192.063495: 38873136655048 cycles:pp: 
+	            60a1 _ZNK6Sophus3SE37inverseEv (/home/dji/Sophus/build/libSophus.so)
+	bfe7b9aede532a9c [unknown] ([unknown])
+
+test_pipeline 17103 118192.167213:   36677908 cycles:pp: 
+	    7fff81196068 release_pages ([kernel.kallsyms])
+	    7fff811c9cad free_pages_and_swap_cache ([kernel.kallsyms])
+	    7fff811b3646 tlb_flush_mmu_free ([kernel.kallsyms])
+	    7fff811b474c tlb_finish_mmu ([kernel.kallsyms])
+	    7fff811b63e0 zap_page_range ([kernel.kallsyms])
+	    7fff811c8da1 sys_madvise ([kernel.kallsyms])
+	    7fff81811576 entry_SYSCALL_64_fastpath ([kernel.kallsyms])
+	           f8627 __madvise (/lib/x86_64-linux-gnu/libc-2.19.so)
+	    7f4f1c000070 [unknown] ([unknown])
+	          15fb40 _ZNK2cv11_InputArray12getMatVectorERSt6vectorINS_3MatESaIS2_EE (/usr/local/lib/libopencv_core.so.2.4.13)
+	53f5894855e2634c [unknown] ([unknown])
+
+test_pipeline 17103 118192.179813: 34014001907893 cycles:pp: 
+	           7fa5c _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17100 118192.418288:   52265660 cycles:pp: 
+	            8e51 inflate (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118192.437529: 26041983661571 cycles:pp: 
+	            a7e4 inflate (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17103 118193.632968:   55337872 cycles:pp: 
+	           7540d _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           71539 _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118193.737096: 34014020586492 cycles:pp: 
+	           6ff11 _ZN3svo4warp10warpAffineERKN5Eigen6MatrixIdLi2ELi2ELi0ELi2ELi2EEERKN2cv3MatERKNS2_IdLi2ELi1ELi0ELi2ELi1EEEiiiPh (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70ce0 _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17100 118193.837127:   30872556 cycles:pp: 
+	           957a3 _ZN3svo11SparseAlign26precomputeReferencePatchesEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           964fa _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118193.849329: 38873138604742 cycles:pp: 
+	            7c80 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118194.145784:   32139949 cycles:pp: 
+	           94e6b _ZN5Eigen8internal31generic_dense_assignment_kernelINS0_9evaluatorINS_6MatrixIdLi6ELi6ELi0ELi6ELi6EEEEENS2_INS_13CwiseBinaryOpINS0_17scalar_product_opIddEEKNS_7ProductINS3_IdLi6ELi1ELi0ELi6ELi1EEENS_9TransposeIKSA_EELi0EEEKNS_14CwiseNullaryOpINS0_18scalar_constant_opIdEEKS4_EEEEEENS0_13add_assign_opIddEELi0EE12assignPacketILi32ELi16ENS0_20eigen_packet_wrapperIU8__vectordEEEEvll.constprop.1020 (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           966b6 _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118194.157675: 34013998006257 cycles:pp: 
+	            ace8 [unknown] (/lib/x86_64-linux-gnu/libpng12.so.0.50.0)
+	   3180008020000 [unknown] ([unknown])
+
+test_pipeline 17103 118194.457707:   41106854 cycles:pp: 
+	           7f10f _int_free (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17103 118194.471708: 34014004970513 cycles:pp: 
+	           700b3 _ZN3svo4warp10warpAffineERKN5Eigen6MatrixIdLi2ELi2ELi0ELi2ELi2EEERKN2cv3MatERKNS2_IdLi2ELi1ELi0ELi2ELi1EEEiiiPh (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70ce0 _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17100 118194.995144:   29853143 cycles:pp: 
+	            7c80 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118195.005328: 38873135535823 cycles:pp: 
+	           465d7 _ZNK3svo5Point15getCloseViewObsERKN5Eigen6MatrixIdLi3ELi1ELi0ELi3ELi1EEERPNS_7FeatureE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7070c _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118195.440232:   51417118 cycles:pp: 
+	           3425c [unknown] (/usr/lib/x86_64-linux-gnu/libgdk-x11-2.0.so.0.2400.23)
+
+test_pipeline 17100 118195.458196: 29762266080802 cycles:pp: 
+	           af7c0 _ZN2cvL9ThickLineERNS_3MatENS_6Point_IiEES3_PKviiii (/usr/local/lib/libopencv_core.so.2.4.13)
+	               0 [unknown] ([unknown])
+
+test_pipeline 17100 118196.115499:   30188480 cycles:pp: 
+	            7c47 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118196.125597: 34013997837977 cycles:pp: 
+	           7540d _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70949 _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17103 118196.422676:   55396587 cycles:pp: 
+	           75715 _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           719da _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17100 118196.573862:   56030813 cycles:pp: 
+	           96680 _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118196.593350: 26041986961998 cycles:pp: 
+	           94dc9 _ZN5Eigen8internal31generic_dense_assignment_kernelINS0_9evaluatorINS_6MatrixIdLi6ELi6ELi0ELi6ELi6EEEEENS2_INS_13CwiseBinaryOpINS0_17scalar_product_opIddEEKNS_7ProductINS3_IdLi6ELi1ELi0ELi6ELi1EEENS_9TransposeIKSA_EELi0EEEKNS_14CwiseNullaryOpINS0_18scalar_constant_opIdEEKS4_EEEEEENS0_13add_assign_opIddEELi0EE12assignPacketILi32ELi16ENS0_20eigen_packet_wrapperIU8__vectordEEEEvll.constprop.1021 (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           966da _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118196.716175:   33288671 cycles:pp: 
+	           96198 _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118196.827401: 34013999758207 cycles:pp: 
+	            2879 crc32 (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118197.749200:   58546182 cycles:pp: 
+	           95668 _ZN3svo11SparseAlign26precomputeReferencePatchesEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           964fa _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118197.770915: 26041986793720 cycles:pp: 
+	            7c3e [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17103 118197.828054:   52345953 cycles:pp: 
+	           757e5 _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           719da _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118197.908630: 26041986805474 cycles:pp: 
+	           75800 _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           719da _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17100 118198.369520:   34548832 cycles:pp: 
+	            8de9 inflate (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118198.380592: 34014001191801 cycles:pp: 
+	           71a61 _ZN3svo11Reprojector22pointQualityComparatorERNS0_9CandidateES2_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7483b _ZNSt4listIN3svo11Reprojector9CandidateEN5Eigen17aligned_allocatorIS2_EEE4sortIN5boost3_bi6bind_tIbPFbRS2_SB_ENS9_5list2INS8_3argILi1EEENSF_ILi2EEEEEEEEEvT_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7299d _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118198.534133:   32289147 cycles:pp: 
+	           71a61 _ZN3svo11Reprojector22pointQualityComparatorERNS0_9CandidateES2_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           74795 _ZNSt4listIN3svo11Reprojector9CandidateEN5Eigen17aligned_allocatorIS2_EEE4sortIN5boost3_bi6bind_tIbPFbRS2_SB_ENS9_5list2INS8_3argILi1EEENSF_ILi2EEEEEEEEEvT_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7299d _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118198.546250: 34013998010151 cycles:pp: 
+	            2826 crc32 (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118198.705334:   30130431 cycles:pp: 
+	            7c80 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118198.715185: 38873136230121 cycles:pp: 
+	           757a9 _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70949 _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17103 118199.495868:   35711648 cycles:pp: 
+	           6fb63 _ZN3svo4warp10warpAffineERKN5Eigen6MatrixIdLi2ELi2ELi0ELi2ELi2EEERKN2cv3MatERKNS2_IdLi2ELi1ELi0ELi2ELi1EEEiiiPh (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70ce0 _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118199.743453: 29762253073059 cycles:pp: 
+	           de03b cvUndistortPoints (/usr/local/lib/libopencv_imgproc.so.2.4.13)
+
+test_pipeline 17100 118199.947997:   40241180 cycles:pp: 
+	          16a1df _ZNK2cv12_OutputArray6createENS_5Size_IiEEiibi (/usr/local/lib/libopencv_core.so.2.4.13)
+	               0 [unknown] ([unknown])
+
+test_pipeline 17100 118199.962110: 34014007290930 cycles:pp: 
+	           95721 _ZN3svo11SparseAlign26precomputeReferencePatchesEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           964fa _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17103 118200.099001: 29762270047400 cycles:pp: 
+	           757ea _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           71539 _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17100 118200.416529:   29847094 cycles:pp: 
+	           6fed1 _ZN3svo4warp10warpAffineERKN5Eigen6MatrixIdLi2ELi2ELi0ELi2ELi2EEERKN2cv3MatERKNS2_IdLi2ELi1ELi0ELi2ELi1EEEiiiPh (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           708df _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118200.427891: 38873134189466 cycles:pp: 
+	            7ca0 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118201.021065:   31921840 cycles:pp: 
+	            7c58 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118201.031231: 38873137729292 cycles:pp: 
+	           71a5b _ZN3svo11Reprojector22pointQualityComparatorERNS0_9CandidateES2_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           74795 _ZNSt4listIN3svo11Reprojector9CandidateEN5Eigen17aligned_allocatorIS2_EEE4sortIN5boost3_bi6bind_tIbPFbRS2_SB_ENS9_5list2INS8_3argILi1EEENSF_ILi2EEEEEEEEEvT_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7299d _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118201.361245:   54535646 cycles:pp: 
+	            28f2 crc32 (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118201.380438: 29762268767331 cycles:pp: 
+	            7c92 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118201.988343:   50400616 cycles:pp: 
+	            7c92 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118202.005474: 29762263226073 cycles:pp: 
+	            226e adler32 (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17103 118202.724716:   42828272 cycles:pp: 
+	           757fc _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           719da _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17100 118202.734933:   49323574 cycles:pp: 
+	           94e20 _ZN5Eigen8internal31generic_dense_assignment_kernelINS0_9evaluatorINS_6MatrixIdLi6ELi6ELi0ELi6ELi6EEEEENS2_INS_13CwiseBinaryOpINS0_17scalar_product_opIddEEKNS_7ProductINS3_IdLi6ELi1ELi0ELi6ELi1EEENS_9TransposeIKSA_EELi0EEEKNS_14CwiseNullaryOpINS0_18scalar_constant_opIdEEKS4_EEEEEENS0_13add_assign_opIddEELi0EE12assignPacketILi32ELi16ENS0_20eigen_packet_wrapperIU8__vectordEEEEvll.constprop.1022 (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96692 _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118202.752715: 29762265502527 cycles:pp: 
+	            8dbb inflate (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17103 118202.771427: 34014008456165 cycles:pp: 
+	          1cd3fe _ZN2cv9RowFilterIhfNS_8RowNoVecEEclEPKhPhii (/usr/local/lib/libopencv_imgproc.so.2.4.13)
+
+test_pipeline 17100 118203.397843:   37728791 cycles:pp: 
+	           7578a _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70949 _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118203.411943: 34014001400337 cycles:pp: 
+	           94e38 _ZN5Eigen8internal31generic_dense_assignment_kernelINS0_9evaluatorINS_6MatrixIdLi6ELi6ELi0ELi6ELi6EEEEENS2_INS_13CwiseBinaryOpINS0_17scalar_product_opIddEEKNS_7ProductINS3_IdLi6ELi1ELi0ELi6ELi1EEENS_9TransposeIKSA_EELi0EEEKNS_14CwiseNullaryOpINS0_18scalar_constant_opIdEEKS4_EEEEEENS0_13add_assign_opIddEELi0EE12assignPacketILi32ELi16ENS0_20eigen_packet_wrapperIU8__vectordEEEEvll.constprop.1020 (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           966b6 _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118203.776824:   35155014 cycles:pp: 
+	           35f98 [unknown] (/usr/lib/x86_64-linux-gnu/libgdk-x11-2.0.so.0.2400.23)
+
+test_pipeline 17100 118203.789337: 34014002644524 cycles:pp: 
+	           956c5 _ZN3svo11SparseAlign26precomputeReferencePatchesEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           964fa _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118204.381588:   40619720 cycles:pp: 
+	           750b6 _ZN3svo17feature_alignment7align1DERKN2cv3MatERKN5Eigen6MatrixIfLi2ELi1ELi0ELi2ELi1EEEPhSA_iRNS6_IdLi2ELi1ELi0ELi2ELi1EEERd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70a55 _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118204.396841: 29762256813218 cycles:pp: 
+	           94df0 _ZN5Eigen8internal31generic_dense_assignment_kernelINS0_9evaluatorINS_6MatrixIdLi6ELi6ELi0ELi6ELi6EEEEENS2_INS_13CwiseBinaryOpINS0_17scalar_product_opIddEEKNS_7ProductINS3_IdLi6ELi1ELi0ELi6ELi1EEENS_9TransposeIKSA_EELi0EEEKNS_14CwiseNullaryOpINS0_18scalar_constant_opIdEEKS4_EEEEEENS0_13add_assign_opIddEELi0EE12assignPacketILi32ELi16ENS0_20eigen_packet_wrapperIU8__vectordEEEEvll.constprop.1022 (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118205.369489:   29221734 cycles:pp: 
+	           750f8 _ZN3svo17feature_alignment7align1DERKN2cv3MatERKN5Eigen6MatrixIfLi2ELi1ELi0ELi2ELi1EEEPhSA_iRNS6_IdLi2ELi1ELi0ELi2ELi1EEERd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70a55 _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118205.381737: 34013994973341 cycles:pp: 
+	           166b7 [unknown] (/lib/x86_64-linux-gnu/libpng12.so.0.50.0)
+	               0 [unknown] ([unknown])
+
+test_pipeline 17100 118205.540098:   29572213 cycles:pp: 
+	            9e3c inflate (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118205.587558:   36149670 cycles:pp: 
+	           75735 _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70949 _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118205.600640: 29762254593711 cycles:pp: 
+	            ace8 [unknown] (/lib/x86_64-linux-gnu/libpng12.so.0.50.0)
+	   3180008020000 [unknown] ([unknown])
+
+test_pipeline 17100 118206.110661: 38873134986681 cycles:pp: 
+	           94ddb _ZN5Eigen8internal31generic_dense_assignment_kernelINS0_9evaluatorINS_6MatrixIdLi6ELi6ELi0ELi6ELi6EEEEENS2_INS_13CwiseBinaryOpINS0_17scalar_product_opIddEEKNS_7ProductINS3_IdLi6ELi1ELi0ELi6ELi1EEENS_9TransposeIKSA_EELi0EEEKNS_14CwiseNullaryOpINS0_18scalar_constant_opIdEEKS4_EEEEEENS0_13add_assign_opIddEELi0EE12assignPacketILi32ELi16ENS0_20eigen_packet_wrapperIU8__vectordEEEEvll.constprop.1021 (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96638 _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118206.399915:   31749823 cycles:pp: 
+	           757a5 _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70949 _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118206.414280: 38873137282936 cycles:pp: 
+	           80e7c _int_malloc (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118206.917955:   47399885 cycles:pp: 
+	           9ab10 __memcpy_sse2_unaligned (/lib/x86_64-linux-gnu/libc-2.19.so)
+	     280000001e0 [unknown] ([unknown])
+
+test_pipeline 17100 118206.935928: 29762263420004 cycles:pp: 
+	           56833 _ZN5Eigen4LDLTINS_6MatrixIdLi6ELi6ELi0ELi6ELi6EEELi1EE7computeIS2_EERS3_RKNS_9EigenBaseIT_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96990 _ZN3svo11SparseAlign5solveEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96af9 _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118208.018164:   31436867 cycles:pp: 
+	           9ab1b __memcpy_sse2_unaligned (/lib/x86_64-linux-gnu/libc-2.19.so)
+	     280000001e0 [unknown] ([unknown])
+
+test_pipeline 17100 118208.032264: 34013998977011 cycles:pp: 
+	           95800 _ZN3svo11SparseAlign26precomputeReferencePatchesEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           964fa _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118208.213028:   31589236 cycles:pp: 
+	           3e76b _ZN3svo21ptLastOptimComparatorEPNS_5PointES1_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           39631 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118208.225273: 38873138928799 cycles:pp: 
+	           94e24 _ZN5Eigen8internal31generic_dense_assignment_kernelINS0_9evaluatorINS_6MatrixIdLi6ELi6ELi0ELi6ELi6EEEEENS2_INS_13CwiseBinaryOpINS0_17scalar_product_opIddEEKNS_7ProductINS3_IdLi6ELi1ELi0ELi6ELi1EEENS_9TransposeIKSA_EELi0EEEKNS_14CwiseNullaryOpINS0_18scalar_constant_opIdEEKS4_EEEEEENS0_13add_assign_opIddEELi0EE12assignPacketILi32ELi16ENS0_20eigen_packet_wrapperIU8__vectordEEEEvll.constprop.1022 (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           965f6 _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17103 118208.467635:   27449408 cycles:pp: 
+	           70089 _ZN3svo4warp10warpAffineERKN5Eigen6MatrixIdLi2ELi2ELi0ELi2ELi2EEERKN2cv3MatERKNS2_IdLi2ELi1ELi0ELi2ELi1EEEiiiPh (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70ce0 _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118208.796444: 38873134036293 cycles:pp: 
+	           757f3 _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           719da _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17100 118209.245633:   32572078 cycles:pp: 
+	           9618a _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118209.260319: 34013999644165 cycles:pp: 
+	            7ca0 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118209.643040:   53243999 cycles:pp: 
+	           22054 _Z21icvCvt_BGR2RGB_8u_C3RPKhiPhi6CvSize (/usr/local/lib/libopencv_highgui.so.2.4.13)
+
+test_pipeline 17100 118209.662996: 29762266581038 cycles:pp: 
+	           22054 _Z21icvCvt_BGR2RGB_8u_C3RPKhiPhi6CvSize (/usr/local/lib/libopencv_highgui.so.2.4.13)
+
+test_pipeline 17100 118210.308015:   52390620 cycles:pp: 
+	    7fff810c7b0c cpuacct_charge ([kernel.kallsyms])
+	    7fff810b530f update_curr ([kernel.kallsyms])
+	    7fff810b5699 dequeue_entity ([kernel.kallsyms])
+	    7fff810b7b8c dequeue_task_fair ([kernel.kallsyms])
+	    7fff810a9cae deactivate_task ([kernel.kallsyms])
+	    7fff8180d9a9 __schedule ([kernel.kallsyms])
+	    7fff8180dd15 schedule ([kernel.kallsyms])
+	    7fff81810a7b schedule_hrtimeout_range_clock ([kernel.kallsyms])
+	    7fff81810aa3 schedule_hrtimeout_range ([kernel.kallsyms])
+	    7fff81218389 poll_schedule_timeout ([kernel.kallsyms])
+	    7fff81219839 do_sys_poll ([kernel.kallsyms])
+	    7fff81219a65 sys_poll ([kernel.kallsyms])
+	    7fff81811576 entry_SYSCALL_64_fastpath ([kernel.kallsyms])
+	           f0c9d [unknown] (/lib/x86_64-linux-gnu/libc-2.19.so)
+	              80 [unknown] ([unknown])
+
+test_pipeline 17100 118210.326649: 29762266293076 cycles:pp: 
+	           22048 _Z21icvCvt_BGR2RGB_8u_C3RPKhiPhi6CvSize (/usr/local/lib/libopencv_highgui.so.2.4.13)
+
+test_pipeline 17100 118210.677352:   35260840 cycles:pp: 
+	            7c89 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118210.688671: 34014001812234 cycles:pp: 
+	           6fe77 _ZN3svo4warp10warpAffineERKN5Eigen6MatrixIdLi2ELi2ELi0ELi2ELi2EEERKN2cv3MatERKNS2_IdLi2ELi1ELi0ELi2ELi1EEEiiiPh (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           708df _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118211.937722:   31198593 cycles:pp: 
+	            7c4c [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118211.948287: 34014001603548 cycles:pp: 
+	          13c27d _ZNK2cv20CvtColorLoop_InvokerINS_8Gray2RGBIhEEEclERKNS_5RangeE (/usr/local/lib/libopencv_imgproc.so.2.4.13)
+	    7f4f47181c70 [unknown] ([unknown])
+
+test_pipeline 17103 118212.147207:   45533986 cycles:pp: 
+	    7fff810afe9d calc_global_load_tick ([kernel.kallsyms])
+	    7fff810ebe41 update_process_times ([kernel.kallsyms])
+	    7fff810fae95 tick_sched_handle.isra.15 ([kernel.kallsyms])
+	    7fff810fb4cd tick_sched_timer ([kernel.kallsyms])
+	    7fff810ec983 __hrtimer_run_queues ([kernel.kallsyms])
+	    7fff810ece28 hrtimer_interrupt ([kernel.kallsyms])
+	    7fff810530e5 local_apic_timer_interrupt ([kernel.kallsyms])
+	    7fff8181401d smp_apic_timer_interrupt ([kernel.kallsyms])
+	    7fff818122e2 apic_timer_interrupt ([kernel.kallsyms])
+	           dbce2 _ZN4fast23faster_corner_detect_10ILb1EEEvPKhiiisRSt6vectorINS_7fast_xyESaIS4_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           76fe7 _ZN3svo17feature_detection12FastDetector6detectEPNS_5FrameERKSt6vectorIN2cv3MatESaIS6_EEdRSt4listIPNS_7FeatureESaISD_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7dc56 _ZN3svo11DepthFilter15initializeSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e3eb _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118212.162614: 29762261780926 cycles:pp: 
+	           82b24 malloc (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118212.546186:   31184732 cycles:pp: 
+	           757ea _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70949 _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17103 118212.784186:   32456782 cycles:pp: 
+	           7006d _ZN3svo4warp10warpAffineERKN5Eigen6MatrixIdLi2ELi2ELi0ELi2ELi2EEERKN2cv3MatERKNS2_IdLi2ELi1ELi0ELi2ELi1EEEiiiPh (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70ce0 _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118212.852863: 34013997172896 cycles:pp: 
+	           7578f _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           71539 _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17100 118213.004359:   33558221 cycles:pp: 
+	           94e19 _ZN5Eigen8internal31generic_dense_assignment_kernelINS0_9evaluatorINS_6MatrixIdLi6ELi6ELi0ELi6ELi6EEEEENS2_INS_13CwiseBinaryOpINS0_17scalar_product_opIddEEKNS_7ProductINS3_IdLi6ELi1ELi0ELi6ELi1EEENS_9TransposeIKSA_EELi0EEEKNS_14CwiseNullaryOpINS0_18scalar_constant_opIdEEKS4_EEEEEENS0_13add_assign_opIddEELi0EE12assignPacketILi32ELi16ENS0_20eigen_packet_wrapperIU8__vectordEEEEvll.constprop.1022 (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96692 _ZN3svo11SparseAlign16computeResidualsERKN6Sophus3SE3Ebb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           96aeb _ZN3svo11SparseAlign8optimizeERN6Sophus3SE3E (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           974fd _ZN3svo11SparseAlign3runEN5boost10shared_ptrINS_5FrameEEES4_ (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38d17 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118213.015805: 34014000049585 cycles:pp: 
+	           809b5 _int_malloc (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118213.166260:   31621922 cycles:pp: 
+	           6fc3c _ZN3svo4warp10warpAffineERKN5Eigen6MatrixIdLi2ELi2ELi0ELi2ELi2EEERKN2cv3MatERKNS2_IdLi2ELi1ELi0ELi2ELi1EEEiiiPh (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           708df _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118213.273728: 34013997780939 cycles:pp: 
+	            7c58 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118213.512414: 34013998505303 cycles:pp: 
+	            7c23 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118213.916455:   31297864 cycles:pp: 
+	           466af _ZNK3svo5Point15getCloseViewObsERKN5Eigen6MatrixIdLi3ELi1ELi0ELi3ELi1EEERPNS_7FeatureE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7070c _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118213.931121: 29762248929547 cycles:pp: 
+	            7c80 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17103 118214.214478:   30414631 cycles:pp: 
+	           757af _ZN3svo17feature_alignment7align2DERKN2cv3MatEPhS5_iRN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEEb (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           71539 _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17103 118214.224956: 34013997725572 cycles:pp: 
+	           7005b _ZN3svo4warp10warpAffineERKN5Eigen6MatrixIdLi2ELi2ELi0ELi2ELi2EEERKN2cv3MatERKNS2_IdLi2ELi1ELi0ELi2ELi1EEEiiiPh (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           70ce0 _ZN3svo7Matcher23findEpipolarMatchDirectERKNS_5FrameES3_RKNS_7FeatureEdddRd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7fa23 _ZN3svo11DepthFilter11updateSeedsEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           7e39f _ZN3svo11DepthFilter15updateSeedsLoopEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            ba4a [unknown] (/usr/lib/x86_64-linux-gnu/libboost_thread.so.1.54.0)
+	       200000002 [unknown] ([unknown])
+	           80190 _ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3svo11DepthFilterEEENS3_5list1INS3_5valueIPS8_EEEEEEEEED0Ev (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	10c083485de58948 [unknown] ([unknown])
+
+test_pipeline 17100 118215.453586:   34119685 cycles:pp: 
+	           6fc3c _ZN3svo4warp10warpAffineERKN5Eigen6MatrixIdLi2ELi2ELi0ELi2ELi2EEERKN2cv3MatERKNS2_IdLi2ELi1ELi0ELi2ELi1EEEiiiPh (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           708df _ZN3svo7Matcher15findMatchDirectERKNS_5PointERKNS_5FrameERN5Eigen6MatrixIdLi2ELi1ELi0ELi2ELi1EEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           72a14 _ZN3svo11Reprojector13reprojectCellERSt4listINS0_9CandidateEN5Eigen17aligned_allocatorIS2_EEEN5boost10shared_ptrINS_5FrameEEE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           734ea _ZN3svo11Reprojector12reprojectMapEN5boost10shared_ptrINS_5FrameEEERSt6vectorISt4pairIS4_mESaIS7_EE (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           38ea0 _ZN3svo16FrameHandlerMono12processFrameEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	           3b0bc _ZN3svo16FrameHandlerMono8addImageERKN2cv3MatEd (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/lib/libsvo.so)
+	            7cfd _ZN3svo13BenchmarkNode13runFromFolderEv (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	            6d8b main (/home/dji/slam/svo_edgelet_ws/src/svo_edgelet/bin/test_pipeline)
+	           21f45 __libc_start_main (/lib/x86_64-linux-gnu/libc-2.19.so)
+
+test_pipeline 17100 118215.572284: 34014000987937 cycles:pp: 
+	            7c80 [unknown] (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+
+test_pipeline 17100 118216.107263:   34492931 cycles:pp: 
+	           4a390 _ZN2cv3MatC1EPK5CvMatb@plt (/usr/local/lib/libopencv_core.so.2.4.13)
+	               0 [unknown] ([unknown])
+
+test_pipeline 17100 118216.120755: 38873141125374 cycles:pp: 
+	            8dbb inflate (/lib/x86_64-linux-gnu/libz.so.1.2.8)
+

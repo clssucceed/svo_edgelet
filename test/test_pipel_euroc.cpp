@@ -107,7 +107,8 @@ void BenchmarkNode::runFromFolder()
   vector<string> vstrImageLeft;
   vector<string> vstrImageRight;
   vector<double> vTimeStamp;
-  LoadImages("/media/hyj/dataset/datasets/MH_01_easy/mav0/cam0/data", "/media/hyj/dataset/datasets/MH_01_easy/mav0/cam1/data", "MH01.txt", vstrImageLeft, vstrImageRight, vTimeStamp);
+  const std::string root_dir = "/home/dji/Downloads/vio/vins_course/VINS-Course/data/MH_01/mav0/";
+  LoadImages(root_dir + "cam0/data", root_dir + "cam1/data", "MH01.txt", vstrImageLeft, vstrImageRight, vTimeStamp);
 
   if(vstrImageLeft.empty() || vstrImageRight.empty())
   {

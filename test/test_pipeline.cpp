@@ -120,7 +120,7 @@ void BenchmarkNode::runFromFolder()
 #ifdef TXTREAD  // read image filename with txt, TUM rgbd datasets
   std::vector<std::string> vstrImageFilenames;
   std::vector<double> vTimestamps;
-  std::string filepath = std::string("/media/hyj/dataset/datasets/freiburg2_desk");
+  std::string filepath = std::string("/home/dji/data/tum/rgbd_dataset_freiburg2_desk");
   std::string strFile = filepath + "/rgb.txt";
   LoadImages(strFile, vstrImageFilenames, vTimestamps);
 
