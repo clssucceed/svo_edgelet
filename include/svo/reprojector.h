@@ -9,7 +9,8 @@
 //
 // SVO is distributed in the hope that it will be useful, but WITHOUT ANY
 // WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-// FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+// FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+// details.
 //
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
@@ -34,19 +35,15 @@ class Point;
 /// point per cell. Thereby, we achieve a homogeneously distributed set of
 /// matched features and at the same time we can save processing time by not
 /// projecting all points.
-class Reprojector
-{
-public:
+class Reprojector {
+ public:
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
   /// Reprojector config parameters
   struct Options {
-    size_t max_n_kfs;   //!< max number of keyframes to reproject from
+    size_t max_n_kfs;  //!< max number of keyframes to reproject from
     bool find_match_direct;
-    Options()
-    : max_n_kfs(10),
-      find_match_direct(true)
-    {}
+    Options() : max_n_kfs(10), find_match_direct(true) {}
   } options_;
 
   size_t n_matches_;
@@ -60,24 +57,23 @@ public:
   /// overlapping field of view and projects only those map-points.
   void reprojectMap(
       FramePtr frame,
-      std::vector< std::pair<FramePtr,std::size_t> >& overlap_kfs);
+      std::vector<std::pair<FramePtr, std::size_t> >& overlap_kfs);
 
-private:
-
+ private:
   /// A candidate is a point that projects into the image plane and for which we
   /// will search a maching feature in the image.
   struct Candidate {
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
-    Point* pt;       //!< 3D point.
-    Vector2d px;     //!< projected 2D pixel location.
+    Point* pt;    //!< 3D point.
+    Vector2d px;  //!< projected 2D pixel location.
     Candidate(Point* pt, Vector2d& px) : pt(pt), px(px) {}
   };
   typedef std::list<Candidate, aligned_allocator<Candidate> > Cell;
   typedef std::vector<Cell*> CandidateGrid;
 
-  /// The grid stores a set of candidate matches. For every grid cell we try to find one match.
-  struct Grid
-  {
+  /// The grid stores a set of candidate matches. For every grid cell we try to
+  /// find one match.
+  struct Grid {
     CandidateGrid cells;
     vector<int> cell_order;
     int cell_size;
@@ -96,6 +92,6 @@ private:
   bool reprojectPoint(FramePtr frame, Point* point);
 };
 
-} // namespace svo
+}  // namespace svo
 
-#endif // SVO_REPROJECTION_H_
+#endif  // SVO_REPROJECTION_H_

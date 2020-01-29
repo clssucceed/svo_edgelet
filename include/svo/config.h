@@ -9,7 +9,8 @@
 //
 // SVO is distributed in the hope that it will be useful, but WITHOUT ANY
 // WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-// FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+// FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+// details.
 //
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
@@ -17,9 +18,9 @@
 #ifndef SVO_CONFIG_H_
 #define SVO_CONFIG_H_
 
-#include <string>
 #include <stdint.h>
 #include <stdio.h>
+#include <string>
 
 namespace svo {
 
@@ -28,9 +29,8 @@ using std::string;
 /// Global configuration file of SVO.
 /// Implements the Singleton design pattern to allow global access and to ensure
 /// that only one instance exists.
-class Config
-{
-public:
+class Config {
+ public:
   static Config& getInstance();
 
   /// Base-name of the tracefiles.
@@ -45,10 +45,12 @@ public:
   /// Use the IMU to get relative rotations.
   static bool& useImu() { return getInstance().use_imu; }
 
-  /// Number of keyframes in the core. The core-kfs are optimized through bundle adjustment.
+  /// Number of keyframes in the core. The core-kfs are optimized through bundle
+  /// adjustment.
   static size_t& coreNKfs() { return getInstance().core_n_kfs; }
 
-  /// Initial scale of the map. Depends on the distance the camera is moved for the initialization.
+  /// Initial scale of the map. Depends on the distance the camera is moved for
+  /// the initialization.
   static double& mapScale() { return getInstance().map_scale; }
 
   /// Feature grid size of a cell in [px].
@@ -79,27 +81,37 @@ public:
   static size_t& poseOptimNumIter() { return getInstance().poseoptim_num_iter; }
 
   /// Maximum number of points to optimize at every iteration.
-  static size_t& structureOptimMaxPts() { return getInstance().structureoptim_max_pts; }
+  static size_t& structureOptimMaxPts() {
+    return getInstance().structureoptim_max_pts;
+  }
 
   /// Number of iterations in structure optimization.
-  static size_t& structureOptimNumIter() { return getInstance().structureoptim_num_iter; }
+  static size_t& structureOptimNumIter() {
+    return getInstance().structureoptim_num_iter;
+  }
 
   /// Reprojection threshold after bundle adjustment.
   static double& lobaThresh() { return getInstance().loba_thresh; }
 
   /// Threshold for the robust Huber kernel of the local bundle adjustment.
-  static double& lobaRobustHuberWidth() { return getInstance().loba_robust_huber_width; }
+  static double& lobaRobustHuberWidth() {
+    return getInstance().loba_robust_huber_width;
+  }
 
   /// Number of iterations in the local bundle adjustment.
   static size_t& lobaNumIter() { return getInstance().loba_num_iter; }
 
-  /// Minimum distance between two keyframes. Relative to the average height in the map.
+  /// Minimum distance between two keyframes. Relative to the average height in
+  /// the map.
   static double& kfSelectMinDist() { return getInstance().kfselect_mindist; }
 
   /// Select only features with a minimum Harris corner score for triangulation.
-  static double& triangMinCornerScore() { return getInstance().triang_min_corner_score; }
+  static double& triangMinCornerScore() {
+    return getInstance().triang_min_corner_score;
+  }
 
-  /// Subpixel refinement of reprojection and triangulation. Set to 0 if no subpix refinement required!
+  /// Subpixel refinement of reprojection and triangulation. Set to 0 if no
+  /// subpix refinement required!
   static size_t& subpixNIter() { return getInstance().subpix_n_iter; }
 
   /// Limit the number of keyframes in the map. This makes nslam essentially.
@@ -113,13 +125,15 @@ public:
   /// Maximum number of features that should be tracked.
   static size_t& maxFts() { return getInstance().max_fts; }
 
-  /// If the number of tracked features drops below this threshold. Tracking quality is bad.
+  /// If the number of tracked features drops below this threshold. Tracking
+  /// quality is bad.
   static size_t& qualityMinFts() { return getInstance().quality_min_fts; }
 
-  /// If within one frame, this amount of features are dropped. Tracking quality is bad.
+  /// If within one frame, this amount of features are dropped. Tracking quality
+  /// is bad.
   static int& qualityMaxFtsDrop() { return getInstance().quality_max_drop_fts; }
 
-private:
+ private:
   Config();
   Config(Config const&);
   void operator=(Config const&);
@@ -154,6 +168,6 @@ private:
   int quality_max_drop_fts;
 };
 
-} // namespace svo
+}  // namespace svo
 
-#endif // SVO_CONFIG_H_
+#endif  // SVO_CONFIG_H_

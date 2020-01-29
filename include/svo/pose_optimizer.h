@@ -9,7 +9,8 @@
 //
 // SVO is distributed in the hope that it will be useful, but WITHOUT ANY
 // WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-// FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+// FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+// details.
 //
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
@@ -25,27 +26,23 @@ using namespace Eigen;
 using namespace Sophus;
 using namespace std;
 
-typedef Matrix<double,6,6> Matrix6d;
-typedef Matrix<double,2,6> Matrix26d;
-typedef Matrix<double,1,6> Matrix16d;
-typedef Matrix<double,6,1> Vector6d;
+typedef Matrix<double, 6, 6> Matrix6d;
+typedef Matrix<double, 2, 6> Matrix26d;
+typedef Matrix<double, 1, 6> Matrix16d;
+typedef Matrix<double, 6, 1> Vector6d;
 
 class Point;
 
-/// Motion-only bundle adjustment. Minimize the reprojection error of a single frame.
+/// Motion-only bundle adjustment. Minimize the reprojection error of a single
+/// frame.
 namespace pose_optimizer {
 
-void optimizeGaussNewton(
-    const double reproj_thresh,
-    const size_t n_iter,
-    const bool verbose,
-    FramePtr& frame,
-    double& estimated_scale,
-    double& error_init,
-    double& error_final,
-    size_t& num_obs);
+void optimizeGaussNewton(const double reproj_thresh, const size_t n_iter,
+                         const bool verbose, FramePtr& frame,
+                         double& estimated_scale, double& error_init,
+                         double& error_final, size_t& num_obs);
 
-} // namespace pose_optimizer
-} // namespace svo
+}  // namespace pose_optimizer
+}  // namespace svo
 
-#endif // SVO_POSE_OPTIMIZER_H_
+#endif  // SVO_POSE_OPTIMIZER_H_

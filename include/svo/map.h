@@ -9,7 +9,8 @@
 //
 // SVO is distributed in the hope that it will be useful, but WITHOUT ANY
 // WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-// FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+// FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+// details.
 //
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
@@ -17,10 +18,10 @@
 #ifndef SVO_MAP_H_
 #define SVO_MAP_H_
 
-#include <queue>
+#include <svo/global.h>
 #include <boost/noncopyable.hpp>
 #include <boost/thread.hpp>
-#include <svo/global.h>
+#include <queue>
 
 namespace svo {
 
@@ -28,21 +29,23 @@ class Point;
 class Feature;
 class Seed;
 
-/// Container for converged 3D points that are not already assigned to two keyframes.
-class MapPointCandidates
-{
-public:
+/// Container for converged 3D points that are not already assigned to two
+/// keyframes.
+class MapPointCandidates {
+ public:
   typedef pair<Point*, Feature*> PointCandidate;
   typedef list<PointCandidate> PointCandidateList;
 
-  /// The depth-filter is running in a parallel thread and fills the canidate list.
+  /// The depth-filter is running in a parallel thread and fills the canidate
+  /// list.
   /// This mutex controls concurrent access to point_candidates.
   boost::mutex mut_;
 
   /// Candidate points are created from converged seeds.
-  /// Until the next keyframe, these points can be used for reprojection and pose optimization.
+  /// Until the next keyframe, these points can be used for reprojection and
+  /// pose optimization.
   PointCandidateList candidates_;
-  list< Point* > trash_points_;
+  list<Point*> trash_points_;
 
   MapPointCandidates();
   ~MapPointCandidates();
@@ -68,17 +71,20 @@ public:
 };
 
 /// Map object which saves all keyframes which are in a map.
-class Map : boost::noncopyable
-{
-public:
-  list< FramePtr > keyframes_;          //!< List of keyframes in the map.
-  list< Point* > trash_points_;         //!< A deleted point is moved to the trash bin. Now and then this is cleaned. One reason is that the visualizer must remove the points also.
+class Map : boost::noncopyable {
+ public:
+  list<FramePtr> keyframes_;   //!< List of keyframes in the map.
+  list<Point*> trash_points_;  //!< A deleted point is moved to the trash bin.
+                               //! Now and then this is cleaned. One reason is
+  //! that the visualizer must remove the points
+  //! also.
   MapPointCandidates point_candidates_;
 
   Map();
   ~Map();
 
-  /// Reset the map. Delete all keyframes and reset the frame and point counters.
+  /// Reset the map. Delete all keyframes and reset the frame and point
+  /// counters.
   void reset();
 
   /// Delete a point in the map and remove all references in keyframes to it.
@@ -96,10 +102,13 @@ public:
   /// Add a new keyframe to the map.
   void addKeyframe(FramePtr new_keyframe);
 
-  /// Given a frame, return all keyframes which have an overlapping field of view.
-  void getCloseKeyframes(const FramePtr& frame, list< pair<FramePtr,double> >& close_kfs) const;
+  /// Given a frame, return all keyframes which have an overlapping field of
+  /// view.
+  void getCloseKeyframes(const FramePtr& frame,
+                         list<pair<FramePtr, double> >& close_kfs) const;
 
-  /// Return the keyframe which is spatially closest and has overlapping field of view.
+  /// Return the keyframe which is spatially closest and has overlapping field
+  /// of view.
   FramePtr getClosestKeyframe(const FramePtr& frame) const;
 
   /// Return the keyframe which is furthest apart from pos.
@@ -130,7 +139,7 @@ void mapValidation(Map* map, int id);
 void frameValidation(Frame* frame, int id);
 void pointValidation(Point* point, int id);
 
-} // namespace map_debug
-} // namespace svo
+}  // namespace map_debug
+}  // namespace svo
 
-#endif // SVO_MAP_H_
+#endif  // SVO_MAP_H_

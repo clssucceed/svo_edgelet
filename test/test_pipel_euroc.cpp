@@ -9,87 +9,83 @@
 //
 // SVO is distributed in the hope that it will be useful, but WITHOUT ANY
 // WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-// FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+// FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+// details.
 //
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include <sophus/se3.h>
+#include <svo/camera_model.h>
 #include <svo/config.h>
+#include <svo/frame.h>
 #include <svo/frame_handler_mono.h>
 #include <svo/map.h>
-#include <svo/frame.h>
-#include <vector>
-#include <string>
 #include <svo/math_lib.h>
-#include <svo/camera_model.h>
-#include <opencv2/opencv.hpp>
-#include <sophus/se3.h>
 #include <iostream>
+#include <opencv2/opencv.hpp>
+#include <string>
+#include <vector>
 
 #include <svo/slamviewer.h>
-#include<thread>
+#include <thread>
 
 namespace svo {
 
-void LoadImages(const string &strPathLeft, const string &strPathRight, const string &strPathTimes,
-                vector<string> &vstrImageLeft, vector<string> &vstrImageRight, vector<double> &vTimeStamps)
-{
-    ifstream fTimes;
-    fTimes.open(strPathTimes.c_str());
-    vTimeStamps.reserve(5000);
-    vstrImageLeft.reserve(5000);
-    vstrImageRight.reserve(5000);
-    while(!fTimes.eof())
-    {
-        string s;
-        getline(fTimes,s);
-        if(!s.empty())
-        {
-            stringstream ss;
-            ss << s;
-            vstrImageLeft.push_back(strPathLeft + "/" + ss.str() + ".png");
-            vstrImageRight.push_back(strPathRight + "/" + ss.str() + ".png");
-            double t;
-            ss >> t;
-            vTimeStamps.push_back(t/1e9);
-
-        }
+void LoadImages(const string& strPathLeft, const string& strPathRight,
+                const string& strPathTimes, vector<string>& vstrImageLeft,
+                vector<string>& vstrImageRight, vector<double>& vTimeStamps) {
+  ifstream fTimes;
+  fTimes.open(strPathTimes.c_str());
+  vTimeStamps.reserve(5000);
+  vstrImageLeft.reserve(5000);
+  vstrImageRight.reserve(5000);
+  while (!fTimes.eof()) {
+    string s;
+    getline(fTimes, s);
+    if (!s.empty()) {
+      stringstream ss;
+      ss << s;
+      vstrImageLeft.push_back(strPathLeft + "/" + ss.str() + ".png");
+      vstrImageRight.push_back(strPathRight + "/" + ss.str() + ".png");
+      double t;
+      ss >> t;
+      vTimeStamps.push_back(t / 1e9);
     }
+  }
 }
 
-class BenchmarkNode
-{
+class BenchmarkNode {
   svo::AbstractCamera* cam_;
   svo::AbstractCamera* cam_r_;
   svo::PinholeCamera* cam_pinhole_;
   svo::FrameHandlerMono* vo_;
 
   SLAM_VIEWER::Viewer* viewer_;
-  std::thread * viewer_thread_;
+  std::thread* viewer_thread_;
 
-public:
+ public:
   BenchmarkNode();
   ~BenchmarkNode();
   void runFromFolder();
 };
 
-BenchmarkNode::BenchmarkNode()
-{
-
-  cam_ = new svo::PinholeCamera(752, 480, 435.2046959714599, 435.2046959714599, 367.4517211914062,252.2008514404297);
-  cam_r_ = new svo::PinholeCamera(752, 480,435.2046959714599, 435.2046959714599, 367.4517211914062, 252.2008514404297);
+BenchmarkNode::BenchmarkNode() {
+  cam_ = new svo::PinholeCamera(752, 480, 435.2046959714599, 435.2046959714599,
+                                367.4517211914062, 252.2008514404297);
+  cam_r_ =
+      new svo::PinholeCamera(752, 480, 435.2046959714599, 435.2046959714599,
+                             367.4517211914062, 252.2008514404297);
 
   vo_ = new svo::FrameHandlerMono(cam_);
   vo_->start();
 
   viewer_ = new SLAM_VIEWER::Viewer(vo_);
-  viewer_thread_ = new std::thread(&SLAM_VIEWER::Viewer::run,viewer_);
+  viewer_thread_ = new std::thread(&SLAM_VIEWER::Viewer::run, viewer_);
   viewer_thread_->detach();
-
 }
 
-BenchmarkNode::~BenchmarkNode()
-{
+BenchmarkNode::~BenchmarkNode() {
   delete vo_;
   delete cam_;
   delete cam_r_;
@@ -100,34 +96,31 @@ BenchmarkNode::~BenchmarkNode()
 }
 
 //#define TXTREAD
-void BenchmarkNode::runFromFolder()
-{
-
+void BenchmarkNode::runFromFolder() {
   // Retrieve paths to images
   vector<string> vstrImageLeft;
   vector<string> vstrImageRight;
   vector<double> vTimeStamp;
-  const std::string root_dir = "/home/dji/Downloads/vio/vins_course/VINS-Course/data/MH_01/mav0/";
-  LoadImages(root_dir + "cam0/data", root_dir + "cam1/data", "MH01.txt", vstrImageLeft, vstrImageRight, vTimeStamp);
+  const std::string root_dir =
+      "/home/dji/Downloads/vio/vins_course/VINS-Course/data/MH_01/mav0/";
+  LoadImages(root_dir + "cam0/data", root_dir + "cam1/data", "MH01.txt",
+             vstrImageLeft, vstrImageRight, vTimeStamp);
 
-  if(vstrImageLeft.empty() || vstrImageRight.empty())
-  {
-      //cerr << "ERROR: No images in provided path." << endl;
-      return ;
+  if (vstrImageLeft.empty() || vstrImageRight.empty()) {
+    // cerr << "ERROR: No images in provided path." << endl;
+    return;
   }
 
-  if(vstrImageLeft.size()!=vstrImageRight.size())
-  {
-      //cerr << "ERROR: Different number of left and right images." << endl;
-      return ;
+  if (vstrImageLeft.size() != vstrImageRight.size()) {
+    // cerr << "ERROR: Different number of left and right images." << endl;
+    return;
   }
 
   // Read rectification parameters
   cv::FileStorage fsSettings("EuRoC.yaml", cv::FileStorage::READ);
-  if(!fsSettings.isOpened())
-  {
-      //cerr << "ERROR: Wrong path to settings" << endl;
-      return ;
+  if (!fsSettings.isOpened()) {
+    // cerr << "ERROR: Wrong path to settings" << endl;
+    return;
   }
 
   cv::Mat K_l, K_r, P_l, P_r, R_l, R_r, D_l, D_r;
@@ -148,54 +141,49 @@ void BenchmarkNode::runFromFolder()
   int rows_r = fsSettings["RIGHT.height"];
   int cols_r = fsSettings["RIGHT.width"];
 
-  if(K_l.empty() || K_r.empty() || P_l.empty() || P_r.empty() || R_l.empty() || R_r.empty() || D_l.empty() || D_r.empty() ||
-          rows_l==0 || rows_r==0 || cols_l==0 || cols_r==0)
-  {
-      //cerr << "ERROR: Calibration parameters to rectify stereo are missing!" << endl;
-      return ;
+  if (K_l.empty() || K_r.empty() || P_l.empty() || P_r.empty() || R_l.empty() ||
+      R_r.empty() || D_l.empty() || D_r.empty() || rows_l == 0 || rows_r == 0 ||
+      cols_l == 0 || cols_r == 0) {
+    // cerr << "ERROR: Calibration parameters to rectify stereo are missing!" <<
+    // endl;
+    return;
   }
 
-  cv::Mat M1l,M2l,M1r,M2r;
-  cv::initUndistortRectifyMap(K_l,D_l,R_l,P_l.rowRange(0,3).colRange(0,3),cv::Size(cols_l,rows_l),CV_32F,M1l,M2l);
+  cv::Mat M1l, M2l, M1r, M2r;
+  cv::initUndistortRectifyMap(K_l, D_l, R_l, P_l.rowRange(0, 3).colRange(0, 3),
+                              cv::Size(cols_l, rows_l), CV_32F, M1l, M2l);
 
   const int nImages = vstrImageLeft.size();
 
   cv::Mat imLeft, imRight;
-  for(int ni=100; ni<nImages; ni++)
-  {
+  for (int ni = 100; ni < nImages; ni++) {
     // Read left and right images from file
-    imLeft = cv::imread(vstrImageLeft[ni],CV_LOAD_IMAGE_UNCHANGED);
+    imLeft = cv::imread(vstrImageLeft[ni], CV_LOAD_IMAGE_UNCHANGED);
 
     assert(!imLeft.empty());
 
     cv::Mat imLeft_rect;
-    cv::remap(imLeft,imLeft_rect,M1l,M2l,cv::INTER_LINEAR);
+    cv::remap(imLeft, imLeft_rect, M1l, M2l, cv::INTER_LINEAR);
 
-    vo_->addImage(imLeft_rect, 0.01*ni);
+    vo_->addImage(imLeft_rect, 0.01 * ni);
 
     // display tracking quality
-    if(vo_->lastFrame() != NULL)
-    {
-        std::cout << "Frame-Id: " << vo_->lastFrame()->id_ << " \t"
-                  << "#Features: " << vo_->lastNumObservations() << " \n";
+    if (vo_->lastFrame() != NULL) {
+      std::cout << "Frame-Id: " << vo_->lastFrame()->id_ << " \t"
+                << "#Features: " << vo_->lastNumObservations() << " \n";
 
-        // access the pose of the camera via vo_->lastFrame()->T_f_w_.
-        std::cout<<"Frame pose: "<< vo_->lastFrame()->T_f_w_ <<std::endl;
-
+      // access the pose of the camera via vo_->lastFrame()->T_f_w_.
+      std::cout << "Frame pose: " << vo_->lastFrame()->T_f_w_ << std::endl;
     }
   }
-
 }
 
-} // namespace svo
+}  // namespace svo
 
-int main(int argc, char** argv)
-{
-
-    svo::BenchmarkNode benchmark;
-    benchmark.runFromFolder();
+int main(int argc, char** argv) {
+  svo::BenchmarkNode benchmark;
+  benchmark.runFromFolder();
 
   printf("BenchmarkNode finished.\n");
   return 0;
 }
-

@@ -9,7 +9,8 @@
 //
 // SVO is distributed in the hope that it will be useful, but WITHOUT ANY
 // WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-// FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+// FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+// details.
 //
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
@@ -17,16 +18,17 @@
 #ifndef SVO_SPARSE_IMG_ALIGN_H_
 #define SVO_SPARSE_IMG_ALIGN_H_
 /*
+#include <svo/global.h>
 #include <vikit/nlls_solver.h>
 #include <vikit/performance_monitor.h>
-#include <svo/global.h>
 
 namespace svo {
 
 class AbstractCamera;
 class Feature;
 
-/// Optimize the pose of the frame by minimizing the photometric error of feature patches.
+/// Optimize the pose of the frame by minimizing the photometric error of
+feature patches.
 class SparseImgAlign : public vk::NLLSSolver<6, SE3>
 {
   static const int patch_halfsize_ = 2;
@@ -54,9 +56,11 @@ public:
   Matrix<double, 6, 6> getFisherInformation();
 
 protected:
-  FramePtr ref_frame_;            //!< reference frame, has depth for gradient pixels.
+  FramePtr ref_frame_;            //!< reference frame, has depth for gradient
+pixels.
   FramePtr cur_frame_;            //!< only the image is known!
-  int level_;                     //!< current pyramid level on which the optimization runs.
+  int level_;                     //!< current pyramid level on which the
+optimization runs.
   bool display_;                  //!< display residual image.
   int max_level_;                 //!< coarsest pyramid level for the alignment.
   int min_level_;                 //!< finest pyramid level for the alignment.
@@ -68,7 +72,8 @@ protected:
   std::vector<bool> visible_fts_;
 
   void precomputeReferencePatches();
-  virtual double computeResiduals(const SE3& model, bool linearize_system, bool compute_weight_scale = false);
+  virtual double computeResiduals(const SE3& model, bool linearize_system, bool
+compute_weight_scale = false);
   virtual int solve();
   virtual void update (const ModelType& old_model, ModelType& new_model);
   virtual void startIteration();
@@ -77,4 +82,4 @@ protected:
 
 } // namespace svo
 */
-#endif // SVO_SPARSE_IMG_ALIGN_H_
+#endif  // SVO_SPARSE_IMG_ALIGN_H_

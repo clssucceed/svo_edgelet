@@ -9,7 +9,8 @@
 //
 // SVO is distributed in the hope that it will be useful, but WITHOUT ANY
 // WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-// FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+// FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+// details.
 //
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
@@ -17,25 +18,23 @@
 #ifndef SVO_FRAME_HANDLER_H_
 #define SVO_FRAME_HANDLER_H_
 
-#include <set>
 #include <svo/camera_model.h>
 #include <svo/frame_handler_base.h>
-#include <svo/reprojector.h>
 #include <svo/initialization.h>
-
+#include <svo/reprojector.h>
+#include <set>
 
 namespace svo {
 
 /// Monocular Visual Odometry Pipeline as described in the SVO paper.
-class FrameHandlerMono : public FrameHandlerBase
-{
-public:
+class FrameHandlerMono : public FrameHandlerBase {
+ public:
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
-  
+
   FrameHandlerMono(svo::AbstractCamera* cam);
   virtual ~FrameHandlerMono();
 
-  void Debug_show_img();   // used to debug reproject point
+  void Debug_show_img();  // used to debug reproject point
 
   /// Provide an image.
   void addImage(const cv::Mat& img, double timestamp);
@@ -48,36 +47,53 @@ public:
 
   /// Get the set of spatially closest keyframes of the last frame.
   const set<FramePtr>& coreKeyframes() { return core_kfs_; }
-  const vector< pair<FramePtr,size_t> > overlap_kfs(){return overlap_kfs_;}
+  const vector<pair<FramePtr, size_t> > overlap_kfs() { return overlap_kfs_; }
 
-  /// Return the feature track to visualize the KLT tracking during initialization.
-  const vector<cv::Point2f>& initFeatureTrackRefPx() const { return klt_homography_init_.px_ref_; }
-  const vector<cv::Point2f>& initFeatureTrackCurPx() const { return klt_homography_init_.px_cur_; }
-  const vector<Vector3d>& initFeatureTrackType() const { return klt_homography_init_.fts_type_; }
+  /// Return the feature track to visualize the KLT tracking during
+  /// initialization.
+  const vector<cv::Point2f>& initFeatureTrackRefPx() const {
+    return klt_homography_init_.px_ref_;
+  }
+  const vector<cv::Point2f>& initFeatureTrackCurPx() const {
+    return klt_homography_init_.px_cur_;
+  }
+  const vector<Vector3d>& initFeatureTrackType() const {
+    return klt_homography_init_.fts_type_;
+  }
 
   /// Access the depth filter.
   DepthFilter* depthFilter() const { return depth_filter_; }
 
-
   /// An external place recognition module may know where to relocalize.
-  bool relocalizeFrameAtPose(
-      const int keyframe_id,
-      const SE3& T_kf_f,
-      const cv::Mat& img,
-      const double timestamp);
+  bool relocalizeFrameAtPose(const int keyframe_id, const SE3& T_kf_f,
+                             const cv::Mat& img, const double timestamp);
 
-protected:
-  svo::AbstractCamera* cam_;                     //!< Camera model, can be ATAN, Pinhole or Ocam (see vikit).
-  //svo::PinholeCamera* cam_;
-  Reprojector reprojector_;                     //!< Projects points from other keyframes into the current frame
-  FramePtr new_frame_;                          //!< Current frame.
-  FramePtr last_frame_;                         //!< Last frame, not necessarily a keyframe.
-  FramePtr last_kf_;      // hyj: used to last_kf_ to judge the view changes, add new keyframe
-  set<FramePtr> core_kfs_;                      //!< Keyframes in the closer neighbourhood.
-  vector< pair<FramePtr,size_t> > overlap_kfs_; //!< All keyframes with overlapping field of view. the paired number specifies how many common mappoints are observed TODO: why vector!?
+ protected:
+  svo::AbstractCamera*
+      cam_;  //!< Camera model, can be ATAN, Pinhole or Ocam (see vikit).
+  // svo::PinholeCamera* cam_;
+  Reprojector reprojector_;  //!< Projects points from other keyframes into the
+                             //! current frame
+  FramePtr new_frame_;       //!< Current frame.
+  FramePtr last_frame_;      //!< Last frame, not necessarily a keyframe.
+  FramePtr last_kf_;  // hyj: used to last_kf_ to judge the view changes, add
+                      // new keyframe
+  set<FramePtr> core_kfs_;  //!< Keyframes in the closer neighbourhood.
+  vector<pair<FramePtr, size_t> > overlap_kfs_;  //!< All keyframes with
+                                                 //! overlapping field of view.
+  //! the paired number specifies
+  //! how many common mappoints
+  //! are observed TODO: why
+  //! vector!?
 
-  initialization::KltHomographyInit klt_homography_init_; //!< Used to estimate pose of the first two keyframes by estimating a homography.
-  DepthFilter* depth_filter_;                   //!< Depth estimation algorithm runs in a parallel thread and is used to initialize new 3D points.
+  initialization::KltHomographyInit klt_homography_init_;  //!< Used to estimate
+                                                           //! pose of the first
+  //! two keyframes by
+  //! estimating a
+  //! homography.
+  DepthFilter* depth_filter_;  //!< Depth estimation algorithm runs in a
+                               //! parallel thread and is used to initialize new
+  //! 3D points.
 
   /// Initialize the visual odometry algorithm.
   virtual void initialize();
@@ -92,9 +108,8 @@ protected:
   virtual UpdateResult processFrame();
 
   /// Try relocalizing the frame at relative position to provided keyframe.
-  virtual UpdateResult relocalizeFrame(
-      const SE3& T_cur_ref,
-      FramePtr ref_keyframe);
+  virtual UpdateResult relocalizeFrame(const SE3& T_cur_ref,
+                                       FramePtr ref_keyframe);
 
   /// Reset the frame handler. Implement in derived class.
   virtual void resetAll();
@@ -103,9 +118,8 @@ protected:
   virtual bool needNewKf(double scene_depth_mean);
 
   void setCoreKfs(size_t n_closest);
-
 };
 
-} // namespace svo
+}  // namespace svo
 
-#endif // SVO_FRAME_HANDLER_H_
+#endif  // SVO_FRAME_HANDLER_H_
