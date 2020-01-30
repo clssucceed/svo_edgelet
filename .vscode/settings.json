@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "thread": "cpp",
+    "limits": "cpp",
+    "bitset": "cpp",
+    "random": "cpp"
+  }
+}

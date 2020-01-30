@@ -101,7 +101,13 @@ BenchmarkNode::BenchmarkNode() {
   vo_->start();
 
   viewer_ = new SLAM_VIEWER::Viewer(vo_);
+  // In every non static member function, first argument is always the pointer
+  // to the object of its own class. So, thread class will pass this pointer as
+  // first argument while calling the passed member function.
   viewer_thread_ = new std::thread(&SLAM_VIEWER::Viewer::run, viewer_);
+  // 为了销毁一个C++线程对象，约么join()函数需要被调用（并结束），要么detach()函数被调用。
+  // 如果一个C++线程对象当销毁时仍然可以被join，异常会被抛出。
+  // more: https://blog.csdn.net/xibeichengf/article/details/71173543
   viewer_thread_->detach();
 }
 

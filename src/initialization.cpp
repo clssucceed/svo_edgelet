@@ -40,6 +40,7 @@ InitResult KltHomographyInit::addFirstFrame(FramePtr frame_ref) {
     return FAILURE;
   }
 
+  // Question: 为什么要检查图像中心区域的特征数目
   int fts_center_img = 0;
   for (size_t i = 0, i_max = px_ref_.size(); i < i_max; ++i) {
     if (px_ref_[i].x > 640 / 4 && px_ref_[i].x < 640 * 3 / 4 &&
@@ -161,12 +162,15 @@ void KltHomographyInit::reset() {
 void detectFeatures(FramePtr frame, vector<Vector3d>& fts_type,
                     vector<cv::Point2f>& px_vec, vector<Vector3d>& f_vec) {
   Features new_features;
+  // TEST: 只使用edgelet无法正常运行
   feature_detection::FastDetector detector(frame->img().cols, frame->img().rows,
                                            Config::gridSize(),
                                            Config::nPyrLevels());
+  // Question: 没有看懂fast的实现和grid逻辑
   detector.detect(frame.get(), frame->img_pyr_, Config::triangMinCornerScore(),
                   new_features);
 
+  // TODO: 尝试只使用fast或者edgelet的效果
   feature_detection::EdgeDetector edge_detector(
       frame->img().cols, frame->img().rows, Config::gridSize(),
       Config::nPyrLevels());
@@ -178,7 +182,6 @@ void detectFeatures(FramePtr frame, vector<Vector3d>& fts_type,
   f_vec.clear();
   f_vec.reserve(new_features.size());
   std::for_each(new_features.begin(), new_features.end(), [&](Feature* ftr) {
-
     Vector3d fts_type_temp;
     if (ftr->type == Feature::EDGELET) {
       fts_type_temp[0] = ftr->grad[0];

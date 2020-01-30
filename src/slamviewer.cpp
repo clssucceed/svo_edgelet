@@ -130,6 +130,7 @@ void Viewer::DrawMapRegionPoints() {
   glPointSize(mPointSize);
   glBegin(GL_POINTS);
   glColor3f(1.0, 0.0, 0.0);
+  // Question: 可视化线程是如何和主线程进行数据同步的?
   svo::FramePtr lastframe = _vo->lastFrame();
   for (svo::Features::iterator it = lastframe->fts_.begin();
        it != lastframe->fts_.end(); ++it) {
@@ -329,4 +330,4 @@ void Viewer::run() {
   pangolin::BindToContext("SVO: trajactory viewer");
   std::cout << "pangolin close" << std::endl;
 }
-}
+}  // namespace SLAM_VIEWER

@@ -42,8 +42,9 @@ void FrameHandlerMono::Debug_show_img() {
   for (Features::iterator it = new_frame_->fts_.begin();
        it != new_frame_->fts_.end(); ++it) {
     if ((*it)->type == Feature::EDGELET)
-      cv::line(img_new, cv::Point2f((*it)->px[0] + 3 * (*it)->grad[1],
-                                    (*it)->px[1] - 3 * (*it)->grad[0]),
+      cv::line(img_new,
+               cv::Point2f((*it)->px[0] + 3 * (*it)->grad[1],
+                           (*it)->px[1] - 3 * (*it)->grad[0]),
                cv::Point2f((*it)->px[0] - 3 * (*it)->grad[1],
                            (*it)->px[1] + 3 * (*it)->grad[0]),
                cv::Scalar(0, 0, 255), 2);
@@ -58,8 +59,9 @@ void FrameHandlerMono::Debug_show_img() {
   for (Features::iterator it = last_frame_->fts_.begin();
        it != last_frame_->fts_.end(); ++it) {
     if ((*it)->type == Feature::EDGELET)
-      cv::line(img_last, cv::Point2f((*it)->px[0] + 3 * (*it)->grad[1],
-                                     (*it)->px[1] - 3 * (*it)->grad[0]),
+      cv::line(img_last,
+               cv::Point2f((*it)->px[0] + 3 * (*it)->grad[1],
+                           (*it)->px[1] - 3 * (*it)->grad[0]),
                cv::Point2f((*it)->px[0] - 3 * (*it)->grad[1],
                            (*it)->px[1] + 3 * (*it)->grad[0]),
                cv::Scalar(0, 0, 255), 2);
@@ -79,8 +81,9 @@ void FrameHandlerMono::Debug_show_img() {
         for (Features::iterator it = fptr->fts_.begin(); it != fptr->fts_.end();
              ++it) {
           if ((*it)->type == Feature::EDGELET)
-            cv::line(img, cv::Point2f((*it)->px[0] + 3 * (*it)->grad[1],
-                                      (*it)->px[1] - 3 * (*it)->grad[0]),
+            cv::line(img,
+                     cv::Point2f((*it)->px[0] + 3 * (*it)->grad[1],
+                                 (*it)->px[1] - 3 * (*it)->grad[0]),
                      cv::Point2f((*it)->px[0] - 3 * (*it)->grad[1],
                                  (*it)->px[1] + 3 * (*it)->grad[0]),
                      cv::Scalar(0, 0, 255), 2);
@@ -136,6 +139,7 @@ void FrameHandlerMono::addImage(const cv::Mat& img, const double timestamp) {
   if (!startFrameProcessingCommon(timestamp)) return;
 
   // some cleanup from last iteration, can't do before because of visualization
+  // Question: core_kfs_和overlap_kfs_貌似没有真正使用
   core_kfs_.clear();
   overlap_kfs_.clear();
 
@@ -167,6 +171,7 @@ void FrameHandlerMono::addImage(const cv::Mat& img, const double timestamp) {
       cvtColor(img_new, img_new, CV_GRAY2BGR);
 
     if (stage_ == STAGE_SECOND_FRAME) {
+      // Question: 为什么特地可视化一下vo初始化的过程 
       const vector<cv::Point2f>& px_ref(initFeatureTrackRefPx());
       const vector<cv::Point2f>& px_cur(initFeatureTrackCurPx());
       const vector<Vector3d>& fts_type(initFeatureTrackType());
@@ -191,8 +196,9 @@ void FrameHandlerMono::addImage(const cv::Mat& img, const double timestamp) {
       for (Features::iterator it = new_frame_->fts_.begin();
            it != new_frame_->fts_.end(); ++it) {
         if ((*it)->type == Feature::EDGELET)
-          cv::line(img_new, cv::Point2f((*it)->px[0] + 3 * (*it)->grad[1],
-                                        (*it)->px[1] - 3 * (*it)->grad[0]),
+          cv::line(img_new,
+                   cv::Point2f((*it)->px[0] + 3 * (*it)->grad[1],
+                               (*it)->px[1] - 3 * (*it)->grad[0]),
                    cv::Point2f((*it)->px[0] - 3 * (*it)->grad[1],
                                (*it)->px[1] + 3 * (*it)->grad[0]),
                    cv::Scalar(0, 0, 255), 2);

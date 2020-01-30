@@ -82,6 +82,10 @@ FrameHandlerBase::~FrameHandlerBase() {
 #endif
 }
 
+// 一些辅助工作:
+// 1. 全局第一帧的初始化逻辑(状态管理)
+// 2. 配置计时功能
+// 3. 清空map_
 bool FrameHandlerBase::startFrameProcessingCommon(const double timestamp) {
   if (set_start_) {
     resetAll();
@@ -100,6 +104,10 @@ bool FrameHandlerBase::startFrameProcessingCommon(const double timestamp) {
   return true;
 }
 
+// 主要工作:
+// 1. 打印log
+// 2. 统计耗时
+// 3. 状态管理
 int FrameHandlerBase::finishFrameProcessingCommon(
     const size_t update_id, const UpdateResult dropout,
     const size_t num_observations) {
@@ -114,6 +122,7 @@ int FrameHandlerBase::finishFrameProcessingCommon(
   num_obs_last_ = num_observations;
   SVO_STOP_TIMER("tot_time");
 
+  // Question: 没有看懂
 #ifdef SVO_TRACE
   g_permon->writeToFile();
   {
@@ -123,6 +132,7 @@ int FrameHandlerBase::finishFrameProcessingCommon(
   }
 #endif
 
+  // 状态管理：根据当前帧处理状态，决定整个程序的状态
   if (dropout == RESULT_FAILURE &&
       (stage_ == STAGE_DEFAULT_FRAME || stage_ == STAGE_RELOCALIZING)) {
     stage_ = STAGE_RELOCALIZING;

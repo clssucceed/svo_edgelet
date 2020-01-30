@@ -48,13 +48,16 @@ class Frame : boost::noncopyable {
   double timestamp_;          //!< Timestamp of when the image was recorded.
   svo::AbstractCamera* cam_;  //!< Camera model.
   Sophus::SE3 T_f_w_;         //!< Transform (f)rame from (w)orld.
+  // Question: 优化的方案是怎么计算Cov的？
   Matrix<double, 6, 6> Cov_;  //!< Covariance.
   cv::Mat debug_img_;         // used to draw feature in img_pyr_[0]
   ImgPyr img_pyr_;            //!< Image Pyramid.
   Features fts_;              //!< List of features in the image.
+  // 为什么只用5个点计算overlap: 5个点分别是最边界的4个和最中心的一个
   vector<Feature*> key_pts_;  //!< Five features and associated 3D points which
                               //! are used to detect if two frames have
   //! overlapping field of view.
+  // Question: 关键帧判断逻辑是怎样的?
   bool is_keyframe_;  //!< Was this frames selected as keyframe?
   bool have_initializeSeeds;
   g2oFrameSE3*
@@ -109,7 +112,8 @@ class Frame : boost::noncopyable {
     return cam_->cam2world(px[0], px[1]);
   }
 
-  /// Transforms pixel coordinates (c) to frame unit sphere coordinates (f).
+  /// Transforms pixel coorfuhaodinates (c) to frame unit sphere coordinates
+  /// (f).
   inline Vector3d c2f(const double x, const double y) const {
     return cam_->cam2world(x, y);
   }
@@ -127,6 +131,9 @@ class Frame : boost::noncopyable {
   /// Return the pose of the frame in the (w)orld coordinate frame.
   inline Vector3d pos() const { return T_f_w_.inverse().translation(); }
 
+  // Question:
+  // 1. 2x6的右侧3列分别对应于哪些维度
+  // 2. 为什么前面的2x3列乘以了一个负号
   /// Frame jacobian for projection of 3D point in (f)rame coordinate to
   /// unit plane coordinates uv (focal length = 1).
   inline static void jacobian_xyz2uv(const Vector3d& xyz_in_f,

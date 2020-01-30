@@ -40,6 +40,7 @@ void AbstractDetector::resetGrid() {
   std::fill(grid_occupancy_.begin(), grid_occupancy_.end(), false);
 }
 
+// 将已检测出corner特征的grid设置为occupied，不再检测edge
 void AbstractDetector::setExistingFeatures(const Features& fts) {
   std::for_each(fts.begin(), fts.end(), [&](Feature* i) {
     grid_occupancy_.at(static_cast<int>(i->px[1] / cell_size_) * grid_n_cols_ +
@@ -422,6 +423,7 @@ edge_threshold && mag.ptr<float>(y2)[x2] > edge_threshold)
 void EdgeDetector::detect(Frame* frame, const ImgPyr& img_pyr,
                           const double detection_threshold, Features& fts) {
 #ifdef EDGE
+  //将已检测出corner特征的grid设置为occupied，不再检测edge
   setExistingFeatures(fts);  // corners
 
   cv::Mat img = img_pyr[0].clone();

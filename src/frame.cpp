@@ -76,6 +76,7 @@ void Frame::setKeyPoints() {
     if (key_pts_[i] != NULL)
       if (key_pts_[i]->point == NULL) key_pts_[i] = NULL;
 
+  // 遍历所有特征找出最边界的4个和最中心的一个
   std::for_each(fts_.begin(), fts_.end(), [&](Feature* ftr) {
     if (ftr->point != NULL) checkKeyPoints(ftr);
   });
@@ -93,6 +94,7 @@ void Frame::checkKeyPoints(Feature* ftr) {
                     std::fabs(key_pts_[0]->px[1] - cv)))
     key_pts_[0] = ftr;
 
+  // bottom right
   if (ftr->px[0] >= cu && ftr->px[1] >= cv) {
     if (key_pts_[1] == NULL)
       key_pts_[1] = ftr;
@@ -100,6 +102,7 @@ void Frame::checkKeyPoints(Feature* ftr) {
              (key_pts_[1]->px[0] - cu) * (key_pts_[1]->px[1] - cv))
       key_pts_[1] = ftr;
   }
+  // top right
   if (ftr->px[0] >= cu && ftr->px[1] < cv) {
     if (key_pts_[2] == NULL)
       key_pts_[2] = ftr;
@@ -107,6 +110,7 @@ void Frame::checkKeyPoints(Feature* ftr) {
              (key_pts_[2]->px[0] - cu) * (key_pts_[2]->px[1] - cv))
       key_pts_[2] = ftr;
   }
+  // top left
   if (ftr->px[0] < cu && ftr->px[1] < cv) {
     if (key_pts_[3] == NULL)
       key_pts_[3] = ftr;
@@ -114,6 +118,7 @@ void Frame::checkKeyPoints(Feature* ftr) {
              (key_pts_[3]->px[0] - cu) * (key_pts_[3]->px[1] - cv))
       key_pts_[3] = ftr;
   }
+  // bottom left
   if (ftr->px[0] < cu && ftr->px[1] >= cv) {
     if (key_pts_[4] == NULL)
       key_pts_[4] = ftr;
@@ -131,6 +136,7 @@ void Frame::removeKeyPoint(Feature* ftr) {
       found = true;
     }
   });
+  // 只要5个key point中有一个被删除了，5个key point就需要重新计算
   if (found) setKeyPoints();
 }
 
@@ -194,6 +200,7 @@ void halfSampleNEON(const cv::Mat& in, cv::Mat& out) {
 }
 #endif
 
+// block2x2 -> 1
 void halfSample(const cv::Mat& in, cv::Mat& out) {
   assert(in.rows / 2 == out.rows && in.cols / 2 == out.cols);
   assert(in.type() == CV_8U && out.type() == CV_8U);
@@ -252,6 +259,7 @@ T getMedian(vector<T>& data_vec) {
   return *it;
 }
 
+// 获取frame中所有特征在当前帧坐标系的最小深度和中值深度
 bool getSceneDepth(const Frame& frame, double& depth_mean, double& depth_min) {
   vector<double> depth_vec;
   depth_vec.reserve(frame.fts_.size());

@@ -27,6 +27,7 @@
 namespace svo {
 
 /// Monocular Visual Odometry Pipeline as described in the SVO paper.
+/// 从成员变量和函数不难看出此类主要有三个功能：关键帧，初始化，三角化
 class FrameHandlerMono : public FrameHandlerBase {
  public:
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
@@ -79,6 +80,7 @@ class FrameHandlerMono : public FrameHandlerBase {
   FramePtr last_kf_;  // hyj: used to last_kf_ to judge the view changes, add
                       // new keyframe
   set<FramePtr> core_kfs_;  //!< Keyframes in the closer neighbourhood.
+  // Question: 不是很明白
   vector<pair<FramePtr, size_t> > overlap_kfs_;  //!< All keyframes with
                                                  //! overlapping field of view.
   //! the paired number specifies
