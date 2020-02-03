@@ -68,16 +68,21 @@ class Reprojector {
     Vector2d px;  //!< projected 2D pixel location.
     Candidate(Point* pt, Vector2d& px) : pt(pt), px(px) {}
   };
+  // 临近map中的point投影到当前cell形成的list
   typedef std::list<Candidate, aligned_allocator<Candidate> > Cell;
   typedef std::vector<Cell*> CandidateGrid;
 
   /// The grid stores a set of candidate matches. For every grid cell we try to
   /// find one match.
   struct Grid {
+    // 这里的Cell对应正常的grid概念,这里的Grid对应正常的grids概念
     CandidateGrid cells;
+    // Question: cell_order为什么要是乱序的
     vector<int> cell_order;
     int cell_size;
+    // grid_n_cols = img_cols / cell_size
     int grid_n_cols;
+    // grid_n_rows = img_rows / cell_size
     int grid_n_rows;
   };
 

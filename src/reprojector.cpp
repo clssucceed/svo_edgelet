@@ -60,6 +60,7 @@ void Reprojector::resetGrid() {
                 [&](Cell* c) { c->clear(); });
 }
 
+// overlap_kfs记录了ovelapping kfs中有多少个特征可以投影到frame
 void Reprojector::reprojectMap(
     FramePtr frame,
     std::vector<std::pair<FramePtr, std::size_t> >& overlap_kfs) {
@@ -67,17 +68,19 @@ void Reprojector::reprojectMap(
 
   // Identify those Keyframes which share a common field of view.
   SVO_START_TIMER("reproject_kfs");
+  // 获取和frame overlap的kfs，同时返回kf和frame之间的距离
   list<pair<FramePtr, double> > close_kfs;
   map_.getCloseKeyframes(frame, close_kfs);
 
-  // Sort KFs with overlap according to their closeness
+  // Sort KFs with overlap according to their closeness(kf和frame之间的距离)
   close_kfs.sort(boost::bind(&std::pair<FramePtr, double>::second, _1) <
                  boost::bind(&std::pair<FramePtr, double>::second, _2));
 
   // Reproject all mappoints of the closest N kfs with overlap. We only store
   // in which grid cell the points fall.
+  // 将临近map中的有效特征投影到当前帧，投影结果信息维护在grid_.cells中
   size_t n = 0;
-  overlap_kfs.reserve(options_.max_n_kfs);
+  overlap_kfs.reserve(options_.max_n_kfs);  // N = 10
   for (auto it_frame = close_kfs.begin(), ite_frame = close_kfs.end();
        it_frame != ite_frame && n < options_.max_n_kfs; ++it_frame, ++n) {
     FramePtr ref_frame = it_frame->first;
@@ -96,6 +99,7 @@ void Reprojector::reprojectMap(
       // make sure we project a point only once
       if ((*it_ftr)->point->last_projected_kf_id_ == frame->id_) continue;
       (*it_ftr)->point->last_projected_kf_id_ = frame->id_;
+      // overlap_kfs记录了ovelapping kfs中有多少个特征可以投影到frame
       if (reprojectPoint(frame, (*it_ftr)->point)) overlap_kfs.back().second++;
     }
   }
@@ -104,6 +108,7 @@ void Reprojector::reprojectMap(
   // "<<map_.point_candidates_.candidates_.size()<<"\t overlap_kfs size:
   // "<<overlap_kfs.size()<<" \033[0m"<<std::endl;
   // Now project all point candidates
+  // 遍历map_.point_candidates_.candidates_，去除连续10次投影失败的candidates
   SVO_START_TIMER("reproject_candidates");
   {
     boost::unique_lock<boost::mutex> lock(map_.point_candidates_.mut_);
@@ -144,6 +149,7 @@ bool Reprojector::pointQualityComparator(Candidate& lhs, Candidate& rhs) {
 }
 
 bool Reprojector::reprojectCell(Cell& cell, FramePtr frame) {
+  // 将Cell中所有的Candidate按照3d点的Quality排序
   cell.sort(boost::bind(&Reprojector::pointQualityComparator, _1, _2));
   Cell::iterator it = cell.begin();
   while (it != cell.end()) {
@@ -231,6 +237,9 @@ bool Reprojector::reprojectCell(Cell& cell, FramePtr frame) {
   return false;
 }
 
+// 1. 将point投影到frame
+// 2. 判断是否落在中心区域(border = 8)
+// 3. 如果落在中心区域，计算grid index（k）,并且向cells[k]中增加一个Candidate
 bool Reprojector::reprojectPoint(FramePtr frame, Point* point) {
   Vector2d px(frame->w2c(point->pos_));
   if (frame->cam_->isInFrame(px.cast<int>(),

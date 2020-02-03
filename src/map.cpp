@@ -94,6 +94,7 @@ void Map::addKeyframe(FramePtr new_keyframe) {
   keyframes_.push_back(new_keyframe);
 }
 
+// close_kfs中的double字段表示kf和frame原点之间的距离
 void Map::getCloseKeyframes(
     const FramePtr& frame,
     std::list<std::pair<FramePtr, double> >& close_kfs) const {
@@ -104,6 +105,7 @@ void Map::getCloseKeyframes(
       if (keypoint == nullptr) continue;
 
       if (frame->isVisible(keypoint->point->pos_)) {
+        // 只要key frame中有一个key point被frame看见，就认为二者overlap
         close_kfs.push_back(std::make_pair(
             kf,
             (frame->T_f_w_.translation() - kf->T_f_w_.translation()).norm()));

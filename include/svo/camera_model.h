@@ -47,6 +47,7 @@ class AbstractCamera {
 
   inline int height() const { return height_; }
 
+  // 判断obs是否在图像中心区域(border = boundary)
   inline bool isInFrame(const Vector2i& obs, int boundary = 0) const {
     if (obs[0] >= boundary && obs[0] < width() - boundary &&
         obs[1] >= boundary && obs[1] < height() - boundary)
@@ -67,8 +68,9 @@ class PinholeCamera : public AbstractCamera {
   const double fx_, fy_;
   const double cx_, cy_;
   bool distortion_;  //!< is it pure pinhole model or has it radial distortion?
-  double d_[5];      //!< distortion parameters, see
-                     //! http://docs.opencv.org/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html
+  // distortion parameters, see
+  // http://docs.opencv.org/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html
+  double d_[5];
   cv::Mat cvK_, cvD_;
   cv::Mat undist_map1_, undist_map2_;
   bool use_optimization_;
