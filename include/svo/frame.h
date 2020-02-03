@@ -131,11 +131,30 @@ class Frame : boost::noncopyable {
   /// Return the pose of the frame in the (w)orld coordinate frame.
   inline Vector3d pos() const { return T_f_w_.inverse().translation(); }
 
-  // Question:
-  // 1. 2x6的右侧3列分别对应于哪些维度
-  // 2. 为什么前面的2x3列乘以了一个负号
   /// Frame jacobian for projection of 3D point in (f)rame coordinate to
   /// unit plane coordinates uv (focal length = 1).
+  // 推导如下：
+  // c = sum_of_all_pixels (T((K * T_rn_ro * X_ro)_前两维) - I(x_c))^2
+  // 注：　
+  // 1. r: reference frame, n: new, o: old, c: current
+  // 2. 为了提升计算速度，使用的是inverse compositional method
+  // (即变化量发生在reference frame)
+  // 3. 对T进行求导： dT / dT_rn_ro = (dT / dx_rn) * (dx_rn / dT_rn_ro)
+  // jacobian_xyz2uv计算的就是dx_rn / dT_rn_ro(没有考虑K,或者将f认为等于1)
+  // 下面以u为例推导：
+  // 正向推导过程：
+  // X_rn = T_rn_ro * X_ro = (I + theta.hat()) * X_ro + t
+  // x_rn_x = X_rn_x / X_rn_z
+  // x_rn_u = f * x_rn_x + cu
+  // 链式求导过程：
+  // dx_rn_u / d(t, theta) =
+  // (dx_rn_u / d_x_rn_x) * (dx_rn_x / dX_rn) * (dX_rn / d(t, theta))
+  // dx_rn_u / d_x_rn_x = f
+  // dx_rn_x / dX_rn = (1 / X_rn_z, 0, -X_rn_x / X_rn_z^2)
+  // dX_rn / dt = I; dX_rn / dtheta = X_ro.hat()
+  // Question:
+  // 1. 为什么jacobian乘以了-1
+  // 2. 实现中是否做了如下近似: X_rn = X_ro
   inline static void jacobian_xyz2uv(const Vector3d& xyz_in_f,
                                      Matrix<double, 2, 6>& J) {
     const double x = xyz_in_f[0];
@@ -155,7 +174,7 @@ class Frame : boost::noncopyable {
     J(1, 2) = y * z_inv_2;        // y/z^2
     J(1, 3) = 1.0 + y * J(1, 2);  // 1.0 + y^2/z^2
     J(1, 4) = -J(0, 3);           // -x*y/z^2
-    J(1, 5) = -x * z_inv;         // x/z
+    J(1, 5) = -x * z_inv;         // -x/z
   }
 };
 

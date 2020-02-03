@@ -53,8 +53,10 @@ size_t SparseAlign::run(FramePtr ref_frame, FramePtr cur_frame) {
 
   ref_frame_ = ref_frame;
   cur_frame_ = cur_frame;
+  // 只预分配了保存一层ref_patch的内存空间
   ref_patch_cache_ = cv::Mat(ref_frame_->fts_.size(), patch_area_,
                              CV_32F);  //  create  n x 16 matrix
+  // Question: 没有看懂这个变量意图
   jacobian_cache_.resize(Eigen::NoChange,
                          ref_patch_cache_.rows * patch_area_);  // n x 16
   visible_fts_.resize(
@@ -71,6 +73,7 @@ size_t SparseAlign::run(FramePtr ref_frame, FramePtr cur_frame) {
   }
   cur_frame_->T_f_w_ = T_cur_from_ref * ref_frame_->T_f_w_;
 
+  // 返回值表示有效特征数目
   return n_meas_ / patch_area_;
 }
 
@@ -103,14 +106,19 @@ void SparseAlign::precomputeReferencePatches() {
 
     // cannot just take the 3d points coordinate because of the reprojection
     // errors in the reference image!!!
+    // 1. 一般depth是相机系z轴坐标，这里却是3d点相机系下的模长
+    // 2. bearing vector通常是unit，这里和wiki是一致的
+    // 3. 但是１，２相乘确实可以获得了3d点在相机系下的坐标
     const double depth(((*it)->point->pos_ - ref_pos).norm());
     const Vector3d xyz_ref((*it)->f * depth);
 
     // evaluate projection jacobian
+    // 这里计算出的jac没有考虑焦距，因为金字塔的每一层的焦距不一样
     Matrix<double, 2, 6> frame_jac;
     Frame::jacobian_xyz2uv(xyz_ref, frame_jac);
 
     // compute bilateral interpolation weights for reference image
+    // 通过双线性插值获取ref_patch(type: float)
     const float subpix_u_ref = u_ref - u_ref_i;
     const float subpix_v_ref = v_ref - v_ref_i;
     const float w_ref_tl = (1.0 - subpix_u_ref) * (1.0 - subpix_v_ref);
@@ -118,9 +126,11 @@ void SparseAlign::precomputeReferencePatches() {
     const float w_ref_bl = (1.0 - subpix_u_ref) * subpix_v_ref;
     const float w_ref_br = subpix_u_ref * subpix_v_ref;
     size_t pixel_counter = 0;
+    // 第feature_counter个特征对应的ref_patch的首地址
     float* cache_ptr = reinterpret_cast<float*>(ref_patch_cache_.data) +
                        patch_area_ * feature_counter;
     for (int y = 0; y < patch_size_; ++y) {
+      // ref_patch第y行在ref_img中的首地址
       uint8_t* ref_img_ptr = (uint8_t*)ref_img.data +
                              (v_ref_i + y - patch_halfsize_) * stride +
                              (u_ref_i - patch_halfsize_);
@@ -134,6 +144,7 @@ void SparseAlign::precomputeReferencePatches() {
         // we use the inverse compositional: thereby we can take the gradient
         // always at the same position
         // get gradient of warped image (~gradient at warped position)
+        // 当前pixel的dx = 右侧pixel －　左侧pixel　（都是双线性插值的pixel）
         float dx =
             0.5f * ((w_ref_tl * ref_img_ptr[1] + w_ref_tr * ref_img_ptr[2] +
                      w_ref_bl * ref_img_ptr[stride + 1] +
@@ -141,6 +152,7 @@ void SparseAlign::precomputeReferencePatches() {
                     (w_ref_tl * ref_img_ptr[-1] + w_ref_tr * ref_img_ptr[0] +
                      w_ref_bl * ref_img_ptr[stride - 1] +
                      w_ref_br * ref_img_ptr[stride]));
+        // 当前pixel的dy = 下侧pixel - 上侧pixel （都是双线性插值的pixel）
         float dy =
             0.5f * ((w_ref_tl * ref_img_ptr[stride] +
                      w_ref_tr * ref_img_ptr[1 + stride] +
@@ -151,6 +163,8 @@ void SparseAlign::precomputeReferencePatches() {
                      w_ref_bl * ref_img_ptr[0] + w_ref_br * ref_img_ptr[1]));
 
         // cache the jacobian
+        // Question: Eigen::Matrix::row is assigned to Eigen::Matrix::col
+        // 由于frame_jac没有考虑焦距，此处乘上当前层金字塔的焦距
         jacobian_cache_.col(feature_counter * patch_area_ + pixel_counter) =
             (dx * frame_jac.row(0) + dy * frame_jac.row(1)) *
             (focal_length / (1 << level_));
@@ -248,6 +262,10 @@ double SparseAlign::computeResiduals(const SE3& T_cur_from_ref,
           // images" (times error)
           const Vector6d J(jacobian_cache_.col(feature_counter * patch_area_ +
                                                pixel_counter));
+          // 计算H和Jres的过程就是遍历patch中的每个pixel
+          // 1. 计算起对应的J(1 x 6)和res（１ x 1）
+          // 2. 计算J*J^t, J*res
+          // 然后将1的结果累加就是H,将2的结果累加就是Jres
           H_.noalias() += J * J.transpose() * weight;
           Jres_.noalias() -= J * res * weight;
           if (display_)
@@ -262,6 +280,7 @@ double SparseAlign::computeResiduals(const SE3& T_cur_from_ref,
   // if(compute_weight_scale && iter_ == 0)
   // scale_ = scale_estimator_->compute(errors);
 
+  // 返回值表示所有使用的pixel的平均residual^2
   return chi2 / n_meas_;
 }
 
@@ -309,6 +328,7 @@ void SparseAlign::optimize(SE3& model) {
     if (!solve()) {
       // matrix was singular and could not be computed
       std::cout << "Matrix is close to singular! Stop Optimizing." << std::endl;
+      // Question: 打印出H, Jres能看出什么信息？
       std::cout << "H = " << H_ << std::endl;
       std::cout << "Jres = " << Jres_ << std::endl;
       stop_ = true;
@@ -328,6 +348,7 @@ void SparseAlign::optimize(SE3& model) {
     // update the model
     SE3 new_model;
     update(model, new_model);
+    // Bug: 这一句和下一句顺序反了
     old_model = model;
     model = new_model;
 
