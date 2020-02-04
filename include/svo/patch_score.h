@@ -56,6 +56,7 @@ class ZMSSD {
 
   static int threshold() { return threshold_; }
 
+  // score = Sum_of_patch_pixels((ri - ci)^2 - (r_mean - c_mean)^2)
   int computeScore(uint8_t* cur_patch) const {
     uint32_t sumB_uint = 0;
     uint32_t sumBB_uint = 0;

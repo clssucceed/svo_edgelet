@@ -86,6 +86,9 @@ void Point::initNormal() {
   normal_set_ = true;
 }
 
+// 比较当前帧观测的obs_dir(或者bearing vector)和其他关键帧观测的obs_dir的夹角
+// 找出夹角最小的关键帧认为是视角最接近的。当最小夹角大于60度，则认为不存在close
+// view kf
 bool Point::getCloseViewObs(const Vector3d& framepos, Feature*& ftr) const {
   // TODO: get frame with same point of view AND same pyramid level!
   Vector3d obs_dir(framepos - pos_);

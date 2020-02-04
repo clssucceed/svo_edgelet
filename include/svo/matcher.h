@@ -25,7 +25,7 @@ namespace patch_score {
 template <int HALF_PATCH_SIZE>
 class ZMSSD;
 }
-}
+}  // namespace vk
 
 namespace svo {
 
@@ -102,6 +102,7 @@ class Matcher {
   double h_inv_;       //!< hessian of 1d image alignment along epipolar line
   int search_level_;
   bool reject_;
+  // 和当前帧观测视角最接近的一次观测
   Feature* ref_ftr_;
   Vector2d px_cur_;
 

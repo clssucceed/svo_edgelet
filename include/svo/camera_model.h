@@ -55,6 +55,7 @@ class AbstractCamera {
     return false;
   }
 
+  // 判断obs是否在图像指定层数(level)的金字塔的中心区域(border = boundary)
   inline bool isInFrame(const Vector2i& obs, int boundary, int level) const {
     if (obs[0] >= boundary && obs[0] < width() / (1 << level) - boundary &&
         obs[1] >= boundary && obs[1] < height() / (1 << level) - boundary)

@@ -59,13 +59,11 @@ void getWarpMatrixAffine(const svo::AbstractCamera& cam_ref,
   const int halfpatch_size = 5;
   const Vector3d xyz_ref(f_ref * depth_ref);
   Vector3d xyz_du_ref(cam_ref.cam2world(
-      px_ref +
-      Vector2d(halfpatch_size, 0) *
-          (1 << level_ref)));  //  patch tranfrom to the level0 pyr img
-  Vector3d xyz_dv_ref(
-      cam_ref.cam2world(px_ref +
-                        Vector2d(0, halfpatch_size) *
-                            (1 << level_ref)));  //  px_ref is located at level0
+      px_ref + Vector2d(halfpatch_size, 0) *
+                   (1 << level_ref)));  //  patch tranfrom to the level0 pyr img
+  Vector3d xyz_dv_ref(cam_ref.cam2world(
+      px_ref + Vector2d(0, halfpatch_size) *
+                   (1 << level_ref)));  //  px_ref is located at level0
   //  attation!!!! so, A_cur_ref  is only used to affine warp patch at level0
   xyz_du_ref *= xyz_ref[2] / xyz_du_ref[2];
   xyz_dv_ref *= xyz_ref[2] / xyz_dv_ref[2];
@@ -172,6 +170,7 @@ bool depthFromTriangulation(const SE3& T_search_ref, const Vector3d& f_ref,
   return true;
 }
 
+// 从patch_with_border_抽取其中心的patch存储到patch_
 void Matcher::createPatchFromPatchWithBorder() {
   uint8_t* ref_patch_ptr = patch_;
   for (int y = 1; y < patch_size_ + 1; ++y, ref_patch_ptr += patch_size_) {
@@ -182,14 +181,19 @@ void Matcher::createPatchFromPatchWithBorder() {
   }
 }
 
+// pt: 待匹配的特征的Point信息
+// cur_frame: 当前帧信息
+// px_cur: 初值表示待匹配特征在某个关键帧上的观测，最终会收敛到当前帧观测的位置
 bool Matcher::findMatchDirect(const Point& pt, const Frame& cur_frame,
                               Vector2d& px_cur) {
+  // 查找当前特征的所有关键帧观测中和当前帧观测视角最接近的关键帧观测(ref_ftr_)
   if (!pt.getCloseViewObs(cur_frame.pos(), ref_ftr_)) {
     // std::cout<< "\033[1;32m"<<" can not getCloseViewObs!"<<" \033[0m"
     // <<std::endl;
     return false;
   }
 
+  // 判断找出的ref_ftr_是否在该关键帧的指定层金字塔的中心区域
   if (!ref_ftr_->frame->cam_->isInFrame(
           ref_ftr_->px.cast<int>() / (1 << ref_ftr_->level),
           halfpatch_size_ + 2, ref_ftr_->level)) {
@@ -197,22 +201,28 @@ bool Matcher::findMatchDirect(const Point& pt, const Frame& cur_frame,
     return false;
   }
 
-  // warp affine
+  // warp affine: 获取cur frame和ref frame之间的affine warp(A_cur_ref_: 2x2)
   warp::getWarpMatrixAffine(
       *ref_ftr_->frame->cam_, *cur_frame.cam_, ref_ftr_->px, ref_ftr_->f,
       (ref_ftr_->frame->pos() - pt.pos_).norm(),
       cur_frame.T_f_w_ * ref_ftr_->frame->T_f_w_.inverse(), ref_ftr_->level,
       A_cur_ref_);
+  // 找出cur frame和ref frame feature尺度最接近的level（cur frame）
   search_level_ =
       warp::getBestSearchLevel(A_cur_ref_, Config::nPyrLevels() - 1);
+  // 根据计算的affine warp&search level将ref_patch warp成patch_with_border_（cur
+  // frame patch）
   warp::warpAffine(A_cur_ref_, ref_ftr_->frame->img_pyr_[ref_ftr_->level],
                    ref_ftr_->px, ref_ftr_->level, search_level_,
                    halfpatch_size_ + 1, patch_with_border_);
+  // 从patch_with_border_抽取其中心的patch存储到patch_
   createPatchFromPatchWithBorder();
 
   // px_cur should be set
+  // 根据某个关键帧观测来设置当前帧观测的初值并且scale到search_level_
   Vector2d px_scaled(px_cur / (1 << search_level_));
 
+  // 根据feature type类型分别采取不同的align方式
   bool success = false;
   if (ref_ftr_->type == Feature::EDGELET) {
     Vector2d dir_cur(A_cur_ref_ * ref_ftr_->grad);
@@ -225,6 +235,8 @@ bool Matcher::findMatchDirect(const Point& pt, const Frame& cur_frame,
                                          patch_with_border_, patch_,
                                          options_.align_max_iter, px_scaled);
   }
+
+  // 将跟踪结果scale到最fine的那一层
   px_cur = px_scaled * (1 << search_level_);
   return success;
 }
