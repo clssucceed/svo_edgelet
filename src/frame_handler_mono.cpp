@@ -341,13 +341,24 @@ FrameHandlerBase::UpdateResult FrameHandlerMono::processFrame() {
 
   // structure optimization
   SVO_START_TIMER("point_optimizer");
+  // input说明:
+  // new_frame_: current_frame_
+  // Config::structureOptimMaxPts(): Maximum number of points to optimize at
+  // every iteration.
+  // Config::structureOptimNumIter(): Number of iterations in structure
+  // optimization
   optimizeStructure(new_frame_, Config::structureOptimMaxPts(),
                     Config::structureOptimNumIter());
   SVO_STOP_TIMER("point_optimizer");
 
   // select keyframe
   core_kfs_.insert(new_frame_);
+  // input说明：
+  // sfba_n_edges_final: 优化之后重投影误差小于阈值的特征数目
+  // reprojector_.n_matches_: 当前帧在reprojectMap中跟踪成功的3d特征
   setTrackingQuality(sfba_n_edges_final, reprojector_.n_matches_);
+  // Question: 这一步操作vins中是否可以借鉴以避免较大的jitter
+  // TEST： 关闭这一策略
   if (tracking_quality_ == TRACKING_INSUFFICIENT) {
     new_frame_->T_f_w_ =
         last_frame_->T_f_w_;  // reset to avoid crazy pose jumps
@@ -359,6 +370,7 @@ FrameHandlerBase::UpdateResult FrameHandlerMono::processFrame() {
     return RESULT_FAILURE;
   }
   double depth_mean, depth_min;
+  // 获取当前帧中所有特征在当前帧坐标系的最小深度和中值深度
   frame_utils::getSceneDepth(*new_frame_, depth_mean, depth_min);
   if (!needNewKf(depth_mean) || tracking_quality_ == TRACKING_BAD) {
     depth_filter_->addFrame(new_frame_);
@@ -503,9 +515,11 @@ void FrameHandlerMono::setFirstFrame(const FramePtr& first_frame) {
   stage_ = STAGE_DEFAULT_FRAME;
 }
 
+// 根据视差和关键帧之间的相对距离判断是否为关键帧
 bool FrameHandlerMono::needNewKf(double scene_depth_mean) {
   vector<double> pixel_dist;
   int cnt = 0;
+  // 遍历上一关键帧的前30个有效的特征计算其上一关键帧和当前帧之间的视差并且保存在pixel_dist中
   for (auto it = last_kf_->fts_.begin(), it_end = last_kf_->fts_.end();
        it != it_end; ++it) {
     // check if the feature has a mappoint assigned
@@ -519,12 +533,15 @@ bool FrameHandlerMono::needNewKf(double scene_depth_mean) {
     if (cnt > 30) break;
   }
 
+  // 视差中值
   double d = getMedian(pixel_dist);
+  // 如果视差中值大于40,则认为是关键帧并且返回
   if (d > 40)  // 40
   {
     return true;
   }
 
+  // 如果存在共视关系关键帧中只要有一个关键帧的原点在当前帧坐标系的三个坐标都较小就认为是非关键帧
   for (auto it = overlap_kfs_.begin(), ite = overlap_kfs_.end(); it != ite;
        ++it) {
     Vector3d relpos = new_frame_->w2f(it->first->pos());

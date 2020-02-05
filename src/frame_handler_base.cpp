@@ -154,6 +154,9 @@ void FrameHandlerBase::resetCommon() {
   SVO_INFO_STREAM("RESET");
 }
 
+// num_observations: 在optimizeGaussNewton之后重投影误差小于阈值的特征数目
+// init_match_number: 当前帧在reprojectMap中跟踪成功的3d特征
+// 根据optimizeGaussNewton和reprojectMap操作之后”存活“的特征数目决定tracking_quality_
 void FrameHandlerBase::setTrackingQuality(const size_t num_observations,
                                           const size_t init_match_number) {
   tracking_quality_ = TRACKING_GOOD;
@@ -181,16 +184,23 @@ bool ptLastOptimComparator(Point* lhs, Point* rhs) {
   return (lhs->last_structure_optim_ < rhs->last_structure_optim_);
 }
 
+// frame: current_frame_
+// max_n_pts: Maximum number of points to optimize at every iteration.
+// max_iter: Number of iterations in structure optimization
 void FrameHandlerBase::optimizeStructure(FramePtr frame, size_t max_n_pts,
                                          int max_iter) {
+  // 获取当前帧所有跟踪成功并且优化之后重投影误差小于阈值的特征(pts)
   deque<Point*> pts;
   for (Features::iterator it = frame->fts_.begin(); it != frame->fts_.end();
        ++it) {
     if ((*it)->point != NULL) pts.push_back((*it)->point);
   }
   max_n_pts = min(max_n_pts, pts.size());
+  // 对前max_n_pts个特征进行排序
+  //（按照特征上次进行optimizeStructure操作的时间戳排序,实际实现中使用的新增观测的id）
   nth_element(pts.begin(), pts.begin() + max_n_pts, pts.end(),
               ptLastOptimComparator);
+  // 遍历pts对每个特征进行3d点优化，并且更新last_structure_optim_
   for (deque<Point*>::iterator it = pts.begin(); it != pts.begin() + max_n_pts;
        ++it) {
     (*it)->optimize(max_iter);

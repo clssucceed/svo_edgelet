@@ -46,6 +46,7 @@ class Reprojector {
     Options() : max_n_kfs(10), find_match_direct(true) {}
   } options_;
 
+  // 当前帧在reprojectMap中成功跟踪的特征的数目
   size_t n_matches_;
   size_t n_trials_;
 

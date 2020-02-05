@@ -80,7 +80,7 @@ class FrameHandlerMono : public FrameHandlerBase {
   FramePtr last_kf_;  // hyj: used to last_kf_ to judge the view changes, add
                       // new keyframe
   set<FramePtr> core_kfs_;  //!< Keyframes in the closer neighbourhood.
-  // Question: 不是很明白
+  // overlap_kfs_记录了ovelapping kfs中有多少个特征可以投影到frame
   vector<pair<FramePtr, size_t> > overlap_kfs_;  //!< All keyframes with
                                                  //! overlapping field of view.
   //! the paired number specifies
