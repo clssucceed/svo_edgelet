@@ -252,11 +252,17 @@ bool Matcher::findMatchDirect(const Point& pt, const Frame& cur_frame,
     // patch_: patch_with_border_的中心区域
     // options_.align_max_iter: 10
     // px_scaled: 初值是某个关键帧观测scale到search level，输出是跟踪之后的结果
-    // Question: h_inv_: ???
     success = feature_alignment::align1D(
         cur_frame.img_pyr_[search_level_], dir_cur.cast<float>(),
         patch_with_border_, patch_, options_.align_max_iter, px_scaled, h_inv_);
   } else {
+    // input说明：
+    // cur_frame.img_pyr_[search_level_]： cur frame pyramid in search_level_
+    // patch_with_border_: 将一个正方形的cur patch in search
+    // level通过A_cur_ref进行affine warp之后获取ref patch in ref level
+    // patch_: patch_with_border_的中心区域
+    // options_.align_max_iter: 10
+    // px_scaled: 初值是某个关键帧观测scale到search level，输出是跟踪之后的结果
     success = feature_alignment::align2D(cur_frame.img_pyr_[search_level_],
                                          patch_with_border_, patch_,
                                          options_.align_max_iter, px_scaled);

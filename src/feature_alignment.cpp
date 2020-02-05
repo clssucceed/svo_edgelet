@@ -186,6 +186,14 @@ bool align1D(const cv::Mat& cur_img,
   return converged;
 }
 
+// cur_img: cur frame pyramid in search_level_
+// ref_patch_with_border: 将一个正方形的cur patch in search
+// level通过A_cur_ref进行affine warp之后获取ref patch in ref level patch_:
+// ref_patch: ref_patch_with_border的中心区域
+// n_iter: 10, 最大迭代次数
+// cur_px_estimate: 初值是某个关键帧观测scale到search
+// level，输出是跟踪之后的结果
+// no_simd: false
 bool align2D(const cv::Mat& cur_img, uint8_t* ref_patch_with_border,
              uint8_t* ref_patch, const int n_iter, Vector2d& cur_px_estimate,
              bool no_simd) {
@@ -207,6 +215,9 @@ bool align2D(const cv::Mat& cur_img, uint8_t* ref_patch_with_border,
   bool converged = false;
 
   // compute derivative of template and prepare inverse compositional
+  // 由于使用的是inverse compositional method,
+  // 所以在进行迭代优化之前需要先计算ref
+  // frame的J和H并且加以保存，方便迭代的时候使用
   float __attribute__((__aligned__(16))) ref_patch_dx[patch_area_];
   float __attribute__((__aligned__(16))) ref_patch_dy[patch_area_];
   Matrix3f H;
@@ -219,7 +230,19 @@ bool align2D(const cv::Mat& cur_img, uint8_t* ref_patch_with_border,
   for (int y = 0; y < patch_size_; ++y) {
     uint8_t* it = ref_patch_with_border + (y + 1) * ref_step + 1;
     for (int x = 0; x < patch_size_; ++x, ++it, ++it_dx, ++it_dy) {
+      // J的推导
+      // c = Sigma_of_all_ref_patch_pixels((T(x+delta) + mean_diff - I(x0))^2)
+      // (其中xr = x + delta, T = T(x+delta) + mean_diff)
+      // J[0:1] = dT / ddelta = (dT / dxr) * (dxr / delta)
+      // = [Tx, Ty] * I_2x2 = [Tx, Ty]
+      // J[2] = dT / dmean_diff = 1
+      // mean_diff的解释:
+      // 亮度模型： y = x + b
       Vector3f J;
+      // J[0], J[1]中的0.5的解释：
+      // Tx = (it[1] - it[-1]) / 2 = 0.5 * (it[1] - it[-1])
+      // Ty = (it[ref_step] - it[-ref_step]) / 2
+      //    = 0.5 * (it[ref_step] - it[-ref_step])
       J[0] = 0.5 * (it[1] - it[-1]);
       J[1] = 0.5 * (it[ref_step] - it[-ref_step]);
       J[2] = 1;
@@ -244,6 +267,7 @@ bool align2D(const cv::Mat& cur_img, uint8_t* ref_patch_with_border,
   for (int iter = 0; iter < n_iter; ++iter) {
     int u_r = floor(u);
     int v_r = floor(v);
+    // border check:判断优化之后的cur patch是否完全落在cur img中
     if (u_r < halfpatch_size_ || v_r < halfpatch_size_ ||
         u_r >= cur_img.cols - halfpatch_size_ ||
         v_r >= cur_img.rows - halfpatch_size_)
@@ -254,6 +278,7 @@ bool align2D(const cv::Mat& cur_img, uint8_t* ref_patch_with_border,
       return false;
 
     // compute interpolation weights
+    // 在遍历之前提前算好双线性插值的系数
     float subpix_x = u - u_r;
     float subpix_y = v - v_r;
     float wTL = (1.0 - subpix_x) * (1.0 - subpix_y);
@@ -276,6 +301,12 @@ bool align2D(const cv::Mat& cur_img, uint8_t* ref_patch_with_border,
            ++x, ++it, ++it_ref, ++it_ref_dx, ++it_ref_dy) {
         float search_pixel = wTL * it[0] + wTR * it[1] + wBL * it[cur_step] +
                              wBR * it[cur_step + 1];
+        // res已经对公式中的res取了负号,
+        // 所以update = Hinv * Jres求出的update已经对公式中的update取了负号
+        // 所以u, v, mean_diff更新时用了加号，而没有像公式中一样使用减号
+        // Bug:
+        // mean_diff为什么和it_ref的负号不一致
+        // 修复之后，edge似乎都跟踪失败，这是为什么
         float res = search_pixel - *it_ref + mean_diff;
         Jres[0] -= res * (*it_ref_dx);
         Jres[1] -= res * (*it_ref_dy);
