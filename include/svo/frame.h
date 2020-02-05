@@ -52,7 +52,8 @@ class Frame : boost::noncopyable {
   Matrix<double, 6, 6> Cov_;  //!< Covariance.
   cv::Mat debug_img_;         // used to draw feature in img_pyr_[0]
   ImgPyr img_pyr_;            //!< Image Pyramid.
-  Features fts_;              //!< List of features in the image.
+  // 保存了3d vs 2d alginment（reprojectMap）中成功跟踪的3d feature
+  Features fts_;  //!< List of features in the image.
   // 为什么只用5个点计算overlap: 5个点分别是最边界的4个和最中心的一个
   vector<Feature*> key_pts_;  //!< Five features and associated 3D points which
                               //! are used to detect if two frames have

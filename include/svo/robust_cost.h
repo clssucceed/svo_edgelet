@@ -1,23 +1,23 @@
 /**
-* This file is part of dvo.
-*
-* Copyright 2012 Christian Kerl <christian.kerl@in.tum.de> (Technical University
-* of Munich)
-* For more information see <http://vision.in.tum.de/data/software/dvo>.
-*
-* dvo is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* dvo is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with dvo. If not, see <http://www.gnu.org/licenses/>.
-*/
+ * This file is part of dvo.
+ *
+ * Copyright 2012 Christian Kerl <christian.kerl@in.tum.de> (Technical
+ * University of Munich) For more information see
+ * <http://vision.in.tum.de/data/software/dvo>.
+ *
+ * dvo is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * dvo is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with dvo. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 #ifndef VIKIT_ROBUST_COST_H_
 #define VIKIT_ROBUST_COST_H_
@@ -59,6 +59,7 @@ class TDistributionScaleEstimator : public ScaleEstimator {
   float initial_sigma_;
 };
 
+// TODO: 相关的数学需要查一下
 // estimates scale by computing the median absolute deviation
 class MADScaleEstimator : public ScaleEstimator {
  public:
@@ -111,6 +112,9 @@ class UnitWeightFunction : public WeightFunction {
  * See:
  *   http://en.wikipedia.org/wiki/Redescending_M-estimator
  */
+// f(x):
+// x * x <= 4.6851^2: (1 - x^2 / 4.6851^2)^2
+// x * x > 4.6851^2: 0.0
 class TukeyWeightFunction : public WeightFunction {
  public:
   TukeyWeightFunction(const float b = DEFAULT_B);
@@ -152,5 +156,5 @@ class HuberWeightFunction : public WeightFunction {
 };
 
 }  // namespace robust_cost
-}  // namespace vk
+}  // namespace svo
 #endif  // VIKIT_ROBUST_COST_H_

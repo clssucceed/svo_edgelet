@@ -1,23 +1,23 @@
 /**
-* This file is part of dvo.
-*
-* Copyright 2012 Christian Kerl <christian.kerl@in.tum.de> (Technical University
-* of Munich)
-* For more information see <http://vision.in.tum.de/data/software/dvo>.
-*
-* dvo is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* dvo is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with dvo. If not, see <http://www.gnu.org/licenses/>.
-*/
+ * This file is part of dvo.
+ *
+ * Copyright 2012 Christian Kerl <christian.kerl@in.tum.de> (Technical
+ * University of Munich) For more information see
+ * <http://vision.in.tum.de/data/software/dvo>.
+ *
+ * dvo is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * dvo is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with dvo. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 #include <svo/math_lib.h>
 #include <svo/robust_cost.h>
@@ -30,6 +30,7 @@ namespace robust_cost {
 const float TDistributionScaleEstimator::INITIAL_SIGMA = 5.0f;
 const float TDistributionScaleEstimator::DEFAULT_DOF = 5.0f;
 
+// dof_: 5.0, initial_sigma_:5.0
 TDistributionScaleEstimator::TDistributionScaleEstimator(const float dof)
     : dof_(dof), initial_sigma_(INITIAL_SIGMA) {}
 
@@ -38,6 +39,10 @@ float TDistributionScaleEstimator::compute(std::vector<float>& errors) const {
   int num = 0;
   float lambda = initial_lamda;
   int iterations = 0;
+  // 通过迭代的方式求解lambda使得
+  // n = Sum(6.0 * lambda * error2_i / (5.0 + lambda * error2_i))
+  // lambda的理解：
+  // lambda会使得1 / lambda接近绝大部分error2_i
   do {
     ++iterations;
     initial_lamda = lambda;
@@ -60,6 +65,7 @@ float TDistributionScaleEstimator::compute(std::vector<float>& errors) const {
 
 const float MADScaleEstimator::NORMALIZER = 1.48f;  // 1 / 0.6745
 
+// return median / 1.48
 float MADScaleEstimator::compute(std::vector<float>& errors) const {
   // error must be in absolute values!
   return NORMALIZER * svo::getMedian(errors);
@@ -79,6 +85,9 @@ const float TukeyWeightFunction::DEFAULT_B = 4.6851f;
 
 TukeyWeightFunction::TukeyWeightFunction(const float b) { configure(b); }
 
+// f(x):
+// x * x <= 4.6851^2: (1 - x^2 / 4.6851^2)^2
+// x * x > 4.6851^2: 0.0
 float TukeyWeightFunction::value(const float& x) const {
   const float x_square = x * x;
   if (x_square <= b_square) {
@@ -123,4 +132,4 @@ float HuberWeightFunction::value(const float& t) const {
 }
 
 }  // namespace robust_cost
-}  // namespace vk
+}  // namespace svo

@@ -75,6 +75,7 @@ inline double norm_max(const Eigen::VectorXd& v) {
   return max;
 }
 
+// [u, v] = [X/Z, Y/Z]
 inline Vector2d project2d(const Vector3d& v) { return v.head<2>() / v[2]; }
 
 inline Vector3d unproject2d(const Vector2d& v) {

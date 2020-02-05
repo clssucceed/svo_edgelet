@@ -171,7 +171,7 @@ void FrameHandlerMono::addImage(const cv::Mat& img, const double timestamp) {
       cvtColor(img_new, img_new, CV_GRAY2BGR);
 
     if (stage_ == STAGE_SECOND_FRAME) {
-      // Question: 为什么特地可视化一下vo初始化的过程 
+      // Question: 为什么特地可视化一下vo初始化的过程
       const vector<cv::Point2f>& px_ref(initFeatureTrackRefPx());
       const vector<cv::Point2f>& px_cur(initFeatureTrackCurPx());
       const vector<Vector3d>& fts_type(initFeatureTrackType());
@@ -317,6 +317,15 @@ FrameHandlerBase::UpdateResult FrameHandlerMono::processFrame() {
   SVO_START_TIMER("pose_optimizer");
   size_t sfba_n_edges_final;
   double sfba_thresh, sfba_error_init, sfba_error_final;
+  // input说明:
+  // Config::poseOptimThresh(): Reprojection threshold after pose optimization
+  // Config::poseOptimNumIter(): Number of iterations in local bundle adjustment
+  // verbose: false
+  // new_frame_: current frame
+  // sfba_thresh: 优化前的所有重投影误差的median
+  // sfba_error_init: 优化前的重投影误差的median
+  // sfba_error_final: 优化后的重投影误差的median
+  // sfba_n_edges_final: 优化后重投影误差小于阈值的特征数目
   pose_optimizer::optimizeGaussNewton(
       Config::poseOptimThresh(), Config::poseOptimNumIter(), false, new_frame_,
       sfba_thresh, sfba_error_init, sfba_error_final, sfba_n_edges_final);

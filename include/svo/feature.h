@@ -32,9 +32,10 @@ struct Feature {
   Frame* frame;      //!< Pointer to frame in which the feature was detected.
   Vector2d px;       //!< Coordinates in pixels on pyramid level 0.
   Vector3d f;        //!< Unit-bearing vector of the feature.
-  int level;         //!< Image pyramid level where feature was extracted.
-  Point* point;      //!< Pointer to 3D point which corresponds to the feature.
-  Vector2d grad;     //!< Dominant gradient direction for edglets, normalized.
+  int level;         //!< Image pyramid level where feature was
+              //!< extracted.(跟踪结果的level也会尽量保持一致)
+  Point* point;   //!< Pointer to 3D point which corresponds to the feature.
+  Vector2d grad;  //!< Dominant gradient direction for edglets, normalized.
   Vector2d grad_cur_;  // edgelete grad direction in cur frame hyj
 
   Feature(Frame* _frame, const Vector2d& _px, const Vector2d& _grad, int _level)

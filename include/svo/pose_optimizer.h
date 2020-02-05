@@ -34,7 +34,8 @@ typedef Matrix<double, 6, 1> Vector6d;
 class Point;
 
 /// Motion-only bundle adjustment. Minimize the reprojection error of a single
-/// frame.
+/// frame. (Map point vs 2d feature in current frame to optimize current frame
+/// pose)
 namespace pose_optimizer {
 
 void optimizeGaussNewton(const double reproj_thresh, const size_t n_iter,
