@@ -144,7 +144,7 @@ bool align1D(const cv::Mat& cur_img,
         // Bug:
         // mean_diff为什么和it_ref的负号不一致
         // 修复之后，edge似乎都跟踪失败，这是为什么
-        float res = search_pixel - *it_ref - mean_diff;
+        float res = search_pixel - *it_ref + mean_diff;
         Jres[0] -= res * (*it_ref_dv);
         Jres[1] -= res;
         new_chi2 += res * res;
