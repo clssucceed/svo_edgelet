@@ -30,6 +30,7 @@ namespace svo {
 
 //! Return value between 0 and 255
 //! WARNING This function does not check whether the x/y is within the border
+// 双线性插值出u,v在mat中的intensity
 inline float interpolateMat_8u(const cv::Mat& mat, float u, float v) {
   assert(mat.type() == CV_8U);
   int x = floor(u);
@@ -120,6 +121,14 @@ void warpAffine(const svo::AbstractCamera& cam_ref, const Matrix2d& A_cur_ref,
   }
 }
 
+// A_cur_ref: affine warp between cur patch in level0 and ref patch in ref level
+// img_ref: ref frame pyramid in ref level
+// px_ref: 特征在ref frame中的观测(level 0)
+// level_ref: ref level in ref patch
+// search_level:　ref_level_in_ref_patch和search_level_in_cur_patch的尺度是一致的（或者说是最接近的）
+// halfpatch_size: size of half patch
+// patch: ref patch in ref level（是将一个正方形的cur patch in search
+// level通过A_cur_ref进行affine warp之后获取的）
 void warpAffine(const Matrix2d& A_cur_ref, const cv::Mat& img_ref,
                 const Vector2d& px_ref, const int level_ref,
                 const int search_level, const int halfpatch_size,
@@ -133,15 +142,21 @@ void warpAffine(const Matrix2d& A_cur_ref, const cv::Mat& img_ref,
 
   // Perform the warp on a larger patch.
   uint8_t* patch_ptr = patch;
+  // px_ref: ref patch in level0, px_ref_pyr: ref patch in ref level
   const Vector2f px_ref_pyr = px_ref.cast<float>() / (1 << level_ref);
   for (int y = 0; y < patch_size; ++y) {
     for (int x = 0; x < patch_size; ++x, ++patch_ptr) {
+      // px_patch: cur patch in search_level
       Vector2f px_patch(
           x - halfpatch_size,
           y - halfpatch_size);  // px_patch is locat at  pyr [ref_level ]
+      // px_patch: cur patch in level0
       px_patch *= (1 << search_level);  //  1. patch tranform to level0,
                                         //  because A_ref_cur is only used to
                                         //  affine warp level0 patch
+      // A_ref_cur是ref patch in ref level和cur patch in level0之间的affine warp
+      // px: ref patch in ref level(和cur patch in search
+      // level中的pixel一一对应)
       const Vector2f px(
           A_ref_cur * px_patch +
           px_ref_pyr);  //  2. then, use A_ref_cur  to affine warp the patch
@@ -149,6 +164,7 @@ void warpAffine(const Matrix2d& A_cur_ref, const cv::Mat& img_ref,
           px[1] >= img_ref.rows - 1)
         *patch_ptr = 0;
       else {
+        // 获取ref frame pyramid in ref level中在px处的双线性插值的intensity
         *patch_ptr = (uint8_t)interpolateMat_8u(
             img_ref, px[0], px[1]);  // img_ref  is the  img at pyr[level]
       }
@@ -210,8 +226,8 @@ bool Matcher::findMatchDirect(const Point& pt, const Frame& cur_frame,
   // 找出cur frame和ref frame feature尺度最接近的level（cur frame）
   search_level_ =
       warp::getBestSearchLevel(A_cur_ref_, Config::nPyrLevels() - 1);
-  // 根据计算的affine warp&search level将ref_patch warp成patch_with_border_（cur
-  // frame patch）
+  // 将一个正方形的cur patch in search level通过A_cur_ref进行affine
+  // warp之后获取ref patch in ref level (patch_with_border_)
   warp::warpAffine(A_cur_ref_, ref_ftr_->frame->img_pyr_[ref_ftr_->level],
                    ref_ftr_->px, ref_ftr_->level, search_level_,
                    halfpatch_size_ + 1, patch_with_border_);
@@ -227,6 +243,16 @@ bool Matcher::findMatchDirect(const Point& pt, const Frame& cur_frame,
   if (ref_ftr_->type == Feature::EDGELET) {
     Vector2d dir_cur(A_cur_ref_ * ref_ftr_->grad);
     dir_cur.normalize();
+    // input说明：
+    // cur_frame.img_pyr_[search_level_]: cur frame pyramid in search_level_
+    // dir_cur: ref frame的grad affine warp到cur
+    // frame(由于grad不随着level而变化，所以不考虑scale的问题)
+    // patch_with_border_: 将一个正方形的cur patch in search
+    // level通过A_cur_ref进行affine warp之后获取ref patch in ref level
+    // patch_: patch_with_border_的中心区域
+    // options_.align_max_iter: 10
+    // px_scaled: 初值是某个关键帧观测scale到search level，输出是跟踪之后的结果
+    // Question: h_inv_: ???
     success = feature_alignment::align1D(
         cur_frame.img_pyr_[search_level_], dir_cur.cast<float>(),
         patch_with_border_, patch_, options_.align_max_iter, px_scaled, h_inv_);
@@ -238,6 +264,8 @@ bool Matcher::findMatchDirect(const Point& pt, const Frame& cur_frame,
 
   // 将跟踪结果scale到最fine的那一层
   px_cur = px_scaled * (1 << search_level_);
+
+  // 返回align是否成功的标志位
   return success;
 }
 

@@ -28,11 +28,27 @@ namespace feature_alignment {
 
 #define SUBPIX_VERBOSE 0
 
-bool align1D(
-    const cv::Mat& cur_img,
-    const Vector2f& dir,  // direction in which the patch is allowed to move
-    uint8_t* ref_patch_with_border, uint8_t* ref_patch, const int n_iter,
-    Vector2d& cur_px_estimate, double& h_inv) {
+// cur_img: cur frame pyramid in search_level_
+// dir: ref frame的grad affine warp到cur
+// frame(由于grad不随着level而变化，所以不考虑scale的问题)
+// ref_patch_with_border: 将一个正方形的cur patch in search
+// level通过A_cur_ref进行affine warp之后获取ref patch in ref level patch_:
+// ref_patch: ref_patch_with_border的中心区域
+// n_iter: 10, 最大迭代次数
+// cur_px_estimate: 初值是某个关键帧观测scale到search
+// level，输出是跟踪之后的结果
+// Question: h_inv_: ???
+// NOTE: 只在一层图像上进行alignment
+// klt算法或者patch alginment算法流程总结：(inverse compositional method)
+// step1: 预先计算ref patch的J和H
+// step2: 双线性插值计算出cur patch对应pixel的intensity，进而算出res,
+// 累加出Jres = Sigma(J_i * -res_i)
+// step3: update = H.inv() * Jres
+bool align1D(const cv::Mat& cur_img,
+             const Vector2f& dir,  // direction in which the patch is allowed to
+                                   // move (cur frame)
+             uint8_t* ref_patch_with_border, uint8_t* ref_patch,
+             const int n_iter, Vector2d& cur_px_estimate, double& h_inv) {
   const int halfpatch_size_ = 4;
   const int patch_size = 8;
   const int patch_area = 64;
@@ -43,13 +59,28 @@ bool align1D(
   Matrix2f H;
   H.setZero();
 
-  // compute gradient and hessian
+  // compute gradient and hessian of ref frame (inverse compositional method)
+  // 由于使用的是inverse compositional method,
+  // 所以在进行迭代优化之前需要先计算ref
+  // frame的J和H并且加以保存，方便迭代的时候使用
   const int ref_step = patch_size + 2;
   float* it_dv = ref_patch_dv;
   for (int y = 0; y < patch_size; ++y) {
     uint8_t* it = ref_patch_with_border + (y + 1) * ref_step + 1;
     for (int x = 0; x < patch_size; ++x, ++it, ++it_dv) {
+      // J的推导
+      // c = Sigma_of_all_ref_patch_pixels((T(x+kd) + mean_diff - I(x0))^2)
+      // (其中xr = x + kd, T = T(x+kd) + mean_diff)
+      // J[0] = dT / dk = (dT / dxr) * (dxr / dk)
+      // = [Tx, Ty] * [dx, dy]^T = Tx * dx + Ty * dy
+      // J[1] = dT / dmean_diff = 1
+      // mean_diff的解释:
+      // 亮度模型： y = x + b
       Vector2f J;
+      // J[0]中的0.5的解释：
+      // Tx = (it[1] - it[-1]) / 2 = 0.5 * (it[1] - it[-1])
+      // Ty = (it[ref_step] - it[-ref_step]) / 2
+      //    = 0.5 * (it[ref_step] - it[-ref_step])
       J[0] = 0.5 * (dir[0] * (it[1] - it[-1]) +
                     dir[1] * (it[ref_step] - it[-ref_step]));
       J[1] = 1;
@@ -57,6 +88,7 @@ bool align1D(
       H += J * J.transpose();
     }
   }
+  // h_inv: covariance of 1d image alignment along epipolar line
   h_inv = 1.0 / H(0, 0) * patch_size * patch_size;
   Matrix2f Hinv = H.inverse();
   float mean_diff = 0;
@@ -74,6 +106,7 @@ bool align1D(
   for (int iter = 0; iter < n_iter; ++iter) {
     int u_r = floor(u);
     int v_r = floor(v);
+    // border check:判断优化之后的cur patch是否完全落在cur img中
     if (u_r < halfpatch_size_ || v_r < halfpatch_size_ ||
         u_r >= cur_img.cols - halfpatch_size_ ||
         v_r >= cur_img.rows - halfpatch_size_)
@@ -84,6 +117,7 @@ bool align1D(
       return false;
 
     // compute interpolation weights
+    // 在遍历之前提前算好双线性插值的系数
     float subpix_x = u - u_r;
     float subpix_y = v - v_r;
     float wTL = (1.0 - subpix_x) * (1.0 - subpix_y);
@@ -104,6 +138,11 @@ bool align1D(
       for (int x = 0; x < patch_size; ++x, ++it, ++it_ref, ++it_ref_dv) {
         float search_pixel = wTL * it[0] + wTR * it[1] + wBL * it[cur_step] +
                              wBR * it[cur_step + 1];
+        // Question:
+        // 1. mean_diff为什么和it_ref的负号不一致
+        // res已经对公式中的res取了负号,
+        // 所以update = Hinv * Jres求出的update已经对公式中的update取了负号
+        // 所以u, v, mean_diff更新时用了加号，而没有像公式中一样使用减号
         float res = search_pixel - *it_ref + mean_diff;
         Jres[0] -= res * (*it_ref_dv);
         Jres[1] -= res;
@@ -115,6 +154,7 @@ bool align1D(
 #if SUBPIX_VERBOSE
       cout << "error increased." << endl;
 #endif
+      // Question: 为什么要取消上一次的优化结果,直接终止不可行吗？
       u -= update[0];
       v -= update[1];
       break;

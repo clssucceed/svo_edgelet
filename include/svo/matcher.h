@@ -99,7 +99,11 @@ class Matcher {
   Vector2d epi_dir_;
   double epi_length_;  //!< length of epipolar line segment in pixels (only used
                        //! for epipolar search)
-  double h_inv_;       //!< hessian of 1d image alignment along epipolar line
+  // covariance of 1d image alignment along epipolar line
+  // Question:
+  // 1. h_inv_物理意义是什么
+  // 2. 会怎么使用
+  double h_inv_;
   int search_level_;
   bool reject_;
   // 和当前帧观测视角最接近的一次观测
