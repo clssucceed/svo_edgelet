@@ -138,12 +138,13 @@ bool align1D(const cv::Mat& cur_img,
       for (int x = 0; x < patch_size; ++x, ++it, ++it_ref, ++it_ref_dv) {
         float search_pixel = wTL * it[0] + wTR * it[1] + wBL * it[cur_step] +
                              wBR * it[cur_step + 1];
-        // Question:
-        // 1. mean_diff为什么和it_ref的负号不一致
         // res已经对公式中的res取了负号,
         // 所以update = Hinv * Jres求出的update已经对公式中的update取了负号
         // 所以u, v, mean_diff更新时用了加号，而没有像公式中一样使用减号
-        float res = search_pixel - *it_ref + mean_diff;
+        // Bug:
+        // mean_diff为什么和it_ref的负号不一致
+        // 修复之后，edge似乎都跟踪失败，这是为什么
+        float res = search_pixel - *it_ref - mean_diff;
         Jres[0] -= res * (*it_ref_dv);
         Jres[1] -= res;
         new_chi2 += res * res;
