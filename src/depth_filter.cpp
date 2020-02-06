@@ -113,11 +113,11 @@ void DepthFilter::initializeSeeds(FramePtr frame) {
   // 将已检测出特征的grid设置为occupied，不再检测特征
   feature_detector_->setExistingFeatures(frame->fts_);
   // 在frame中non-occpupied的grid中检测新的corner特征
-  feature_detector_->detect(frame.get(), frame->img_pyr_,
-                            Config::triangMinCornerScore(), new_features);
+  // feature_detector_->detect(frame.get(), frame->img_pyr_,
+  //                           Config::triangMinCornerScore(), new_features);
   // 检测edgelet特征
-  // edge_detector_->detect(frame.get(), frame->img_pyr_,
-  //                        Config::triangMinCornerScore(), new_features);
+  edge_detector_->detect(frame.get(), frame->img_pyr_,
+                         Config::triangMinCornerScore(), new_features);
 
   // initialize a seed for every new feature
   // 暂停seeds update
