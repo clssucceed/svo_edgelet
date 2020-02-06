@@ -89,6 +89,18 @@ class Point : boost::noncopyable {
 
   /// Jacobian of point projection on unit plane (focal length = 1) in frame
   /// (f).
+  // 正向推导过程
+  // [X, Y, Z]_f_new = R_fw * (P_w_old + dp) + t_fw
+  // x_reproj = [X / Z, Y / Z]_f_new
+  // e = x_meas - x_reproj
+  // 链式推导法则: （为了推导简洁,省略了_f_new）
+  // de / dp
+  // = (de / dx_reproj) * (dx_reproj / d(X, Y, Z)) * (d(X, Y, Z) / dp)
+  // de / dx_reproj = -I2x2
+  // du_reproj / d(X, Y, Z) = (1 / Z, 0, -X / Z^2)
+  // dv_reproj / d(X, Y, Z) = (0, 1 / Z, -Y / Z^2)
+  // d(X, Y, Z) / dp = R_fw
+  // NOTE: 没有考虑focal_length
   inline static void jacobian_xyz2uv(const Vector3d& p_in_f,
                                      const Matrix3d& R_f_w,
                                      Matrix23d& point_jac) {

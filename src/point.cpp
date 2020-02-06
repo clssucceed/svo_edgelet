@@ -167,26 +167,36 @@ void Point::optimize(const size_t n_iter)
 
 */
 void Point::optimize(const size_t n_iter) {
+  // 备份优化前的3d点坐标
   Vector3d old_point = pos_;
   double chi2 = 0.0;
   Matrix3d A;
   Vector3d b;
 
+  // 迭代优化
+  // Question:
+  // 如果迭代收敛正常退出，则最后一次的迭代误差和上一次的迭代误差并没有检查是否增大
   for (size_t i = 0; i < n_iter; i++) {
     A.setZero();
     b.setZero();
     double new_chi2 = 0.0;
 
     // compute residuals
+    // 遍历所有关键帧观测构建A,b
     for (auto it = obs_.begin(); it != obs_.end(); ++it) {
       Matrix23d J;
+      // 3d点的关键帧坐标
       const Vector3d p_in_f((*it)->frame->T_f_w_ * pos_);
+      // de / dp = d(u, v) / dp
       Point::jacobian_xyz2uv(p_in_f, (*it)->frame->T_f_w_.rotation_matrix(), J);
+      // z = 1 plane
       const Vector2d e(project2d((*it)->f) - project2d(p_in_f));
 
       if ((*it)->type == Feature::EDGELET) {
         float err_edge = (*it)->grad.transpose() * e;
         new_chi2 += err_edge * err_edge;
+        // e_edgelet = grad.t() * e -->
+        // J_edgelet = (de_edgelet / de) * (de / dp) = grad.t() * J
         A.noalias() +=
             J.transpose() * (*it)->grad * (*it)->grad.transpose() * J;
         b.noalias() -= J.transpose() * (*it)->grad * err_edge;
@@ -211,6 +221,9 @@ void Point::optimize(const size_t n_iter) {
 
     // update the model
     Vector3d new_point = pos_ + dp;
+    // 下面两句顺序好像反了?
+    // 由于new_chi2代表的是上次迭代优化之后的误差，chi2代表的是上上次迭代优化的误差，
+    // 所以应该回退到上上次迭代优化结果，实现中的顺序并没有反
     old_point = pos_;
     pos_ = new_point;
     chi2 = new_chi2;
