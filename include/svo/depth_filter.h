@@ -145,6 +145,7 @@ class DepthFilter {
   feature_detection::DetectorPtr edge_detector_;
   feature_detection::PixelSelectorPtr pixelselector_;
   callback_t seed_converged_cb_;
+  // Seed表示一个feature在某个关键帧上的depth filter信息
   std::list<Seed, aligned_allocator<Seed> > seeds_;
   boost::mutex seeds_mut_;
   bool seeds_updating_halt_;  //!< Set this value to true when seeds updating
@@ -153,10 +154,12 @@ class DepthFilter {
   std::queue<FramePtr> frame_queue_;
   boost::mutex frame_queue_mut_;
   boost::condition_variable frame_queue_cond_;
-  FramePtr new_keyframe_;           //!< Next keyframe to extract new seeds.
-  bool new_keyframe_set_;           //!< Do we have a new keyframe to process?.
-  double new_keyframe_min_depth_;   //!< Minimum depth in the new keyframe. Used
-                                    //! for range in new seeds.
+  FramePtr new_keyframe_;          //!< Next keyframe to extract new seeds.
+  bool new_keyframe_set_;          //!< Do we have a new keyframe to process?.
+  double new_keyframe_min_depth_;  //!< Minimum depth in the new keyframe. Used
+                                   //! for range in new seeds.
+  // 生命周期概述：构造函数中会被初始为0,
+  // DepthFilter::addKeyFrame中会被设置为外界传入中值depth
   double new_keyframe_mean_depth_;  //!< Maximum depth in the new keyframe. Used
                                     //! for range in new seeds.
   svo::DeBuger permon_;  //!< Separate performance monitor since the DepthFilter

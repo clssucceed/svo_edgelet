@@ -23,6 +23,7 @@
 namespace svo {
 
 /// A salient image region that is tracked across frames.
+// Feature就表示一次观测（虽然有指针可以访问到MapPoint和Frame）
 struct Feature {
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 

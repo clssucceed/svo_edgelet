@@ -60,6 +60,7 @@ class Frame : boost::noncopyable {
   //! overlapping field of view.
   // Question: 关键帧判断逻辑是怎样的?
   bool is_keyframe_;  //!< Was this frames selected as keyframe?
+  // 是否已经执行过DepthFilter::initializeSeeds
   bool have_initializeSeeds;
   g2oFrameSE3*
       v_kf_;  //!< Temporary pointer to the g2o node object of the keyframe.

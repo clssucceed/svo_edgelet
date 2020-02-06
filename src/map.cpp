@@ -43,6 +43,7 @@ bool Map::safeDeleteFrame(FramePtr frame) {
   for (auto it = keyframes_.begin(), ite = keyframes_.end(); it != ite; ++it) {
     if (*it == frame) {
       //  SVO_DEBUG_STREAM("999999999999999");
+      //　删除frame中的每一个Feature的信息
       std::for_each((*it)->fts_.begin(), (*it)->fts_.end(),
                     [&](Feature* ftr) { removePtFrameRef(it->get(), ftr); });
       keyframes_.erase(it);
@@ -59,26 +60,36 @@ bool Map::safeDeleteFrame(FramePtr frame) {
   return false;
 }
 
+// 删除ftr对应的MapPoint中的frame帧的观测，如果观测数目小于2,MapPoint也需要删除
 void Map::removePtFrameRef(Frame* frame, Feature* ftr) {
   if (ftr->point == NULL)
     return;  // mappoint may have been deleted in a previous ref. removal
   Point* pt = ftr->point;
+  // 删除Feature中的MapPoint的信息
   ftr->point = NULL;
+  // 如果MapPoint中的观测数目不大于2，
+  // 删除掉frame的观测之后就无法进行三角化了，需要将MapPoint删除掉
   if (pt->obs_.size() <= 2) {
     // If the references list of mappoint has only size=2, delete mappoint
     safeDeletePoint(pt);
     return;
   }
-  pt->deleteFrameRef(frame);   // Remove reference from map_point
+  // 去除MapPoint中的frame的观测
+  pt->deleteFrameRef(frame);  // Remove reference from map_point
+  // 去除frame中的Feature信息（具体而言是key point，用来快速计算overlap）
   frame->removeKeyPoint(ftr);  // Check if mp was keyMp in keyframe
 }
 
+// 从Map中删除MapPoint
 void Map::safeDeletePoint(Point* pt) {
   // Delete references to mappoints in all keyframes
   std::for_each(pt->obs_.begin(), pt->obs_.end(), [&](Feature* ftr) {
+    // 删除Feature中的MapPoint信息
     ftr->point = NULL;
+    // 删除Frame中的Feature信息(具体而言是其中的key point)
     ftr->frame->removeKeyPoint(ftr);
   });
+  // 删除MapPoint中的Features信息
   pt->obs_.clear();
 
   // Delete mappoint
@@ -132,6 +143,7 @@ FramePtr Map::getClosestKeyframe(const FramePtr& frame) const {
   return close_kfs.front().first;
 }
 
+// 找出离pos最远的关键帧
 FramePtr Map::getFurthestKeyframe(const Vector3d& pos) const {
   FramePtr furthest_kf;
   double maxdist = 0.0;
@@ -189,6 +201,10 @@ void MapPointCandidates::newCandidatePoint(Point* point, double depth_sigma2) {
   candidates_.push_back(PointCandidate(point, point->obs_.front()));
 }
 
+// Question:
+// 1. MapPointCandidates的生命周期和作用还不清楚
+// 2. 这个函数的作用也不清楚
+// 将candidates_中首次观测帧是frame的观测信息加到frame中并将相应的candidate删除
 void MapPointCandidates::addCandidatePointToFrame(FramePtr frame) {
   boost::unique_lock<boost::mutex> lock(mut_);
   PointCandidateList::iterator it = candidates_.begin();

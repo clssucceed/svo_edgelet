@@ -36,11 +36,12 @@ AbstractDetector::AbstractDetector(const int img_width, const int img_height,
       grid_n_rows_(ceil(static_cast<double>(img_height) / cell_size_)),
       grid_occupancy_(grid_n_cols_ * grid_n_rows_, false) {}
 
+// 将所有的grid设置为non-occupied
 void AbstractDetector::resetGrid() {
   std::fill(grid_occupancy_.begin(), grid_occupancy_.end(), false);
 }
 
-// 将已检测出corner特征的grid设置为occupied，不再检测edge
+// 将已检测出特征的grid设置为occupied，不再检测特征
 void AbstractDetector::setExistingFeatures(const Features& fts) {
   std::for_each(fts.begin(), fts.end(), [&](Feature* i) {
     grid_occupancy_.at(static_cast<int>(i->px[1] / cell_size_) * grid_n_cols_ +
@@ -57,14 +58,25 @@ FastDetector::FastDetector(const int img_width, const int img_height,
                            const int cell_size, const int n_pyr_levels)
     : AbstractDetector(img_width, img_height, cell_size, n_pyr_levels) {}
 
+/**
+ * 检测过程的大致说明:
+ * 1. 已经被occpupied的grid不再检测特征
+ * 2. 每个grid最多检测一个特征
+ * 3. 每个grid挑选出score最大的特征
+ * 4. score的比较是跨pyramid level的
+ * 5. 最终输出的Corner结构体中会包含level字段，用以说明该特征被检测时的level
+ */
 void FastDetector::detect(Frame* frame, const ImgPyr& img_pyr,
                           const double detection_threshold, Features& fts) {
+  // 总共最多检测grid_n_cols_*grid_n_rows_个特征（每个grid一个）
   Corners corners(grid_n_cols_ * grid_n_rows_,
                   Corner(0, 0, detection_threshold, 0, 0.0f));
   // Corners corners(grid_n_cols_*grid_n_rows_, Corner(0,0,0,0,0.0f));
+  // 每一层都会提取corner
   for (int L = 0; L < n_pyr_levels_; ++L) {
     const int scale = (1 << L);
     vector<fast::fast_xy> fast_corners;
+    // detect
 #if __SSE2__
     fast::fast_corner_detect_10_sse2((fast::fast_byte*)img_pyr[L].data,
                                      img_pyr[L].cols, img_pyr[L].rows,
@@ -78,18 +90,24 @@ void FastDetector::detect(Frame* frame, const ImgPyr& img_pyr,
                                 img_pyr[L].cols, img_pyr[L].rows,
                                 img_pyr[L].cols, 8, fast_corners);
 #endif
+    // fast decriptor
     vector<int> scores, nm_corners;
     fast::fast_corner_score_10((fast::fast_byte*)img_pyr[L].data,
                                img_pyr[L].cols, fast_corners, 8, scores);  // 20
     fast::fast_nonmax_3x3(fast_corners, scores, nm_corners);
 
+    // feature selection: pixel with largest shi-tomas score in a grid (across
+    // all pyramid level)
     for (auto it = nm_corners.begin(), ite = nm_corners.end(); it != ite;
          ++it) {
       fast::fast_xy& xy = fast_corners.at(*it);
       const int k =
           static_cast<int>((xy.y * scale) / cell_size_) * grid_n_cols_ +
           static_cast<int>((xy.x * scale) / cell_size_);
+      // 只在non-occupied grid中检测特征
       if (grid_occupancy_[k]) continue;
+      // 挑选每个grid中score最大的corner输出
+      // (score的比较是跨pyramid level的, 所以Corner结构体包含level字段)
       const float score = fast::shiTomasiScore(img_pyr[L], xy.x, xy.y);
       if (score > corners.at(k).score)
         corners.at(k) = Corner(xy.x * scale, xy.y * scale, score, L, 0.0f);
@@ -98,11 +116,13 @@ void FastDetector::detect(Frame* frame, const ImgPyr& img_pyr,
 
   int debug = 0;
   // Create feature for every corner that has high enough corner score
+  // 将当前帧新检测的特征封装成Feature,并且保存在fts中
   std::for_each(corners.begin(), corners.end(), [&](Corner& c) {
     if (c.score > detection_threshold)
       fts.push_back(new Feature(frame, Vector2d(c.x, c.y), c.level));
   });
 
+  // 将所有grid设置为non-occupied
   resetGrid();
 }
 
@@ -420,6 +440,14 @@ edge_threshold && mag.ptr<float>(y2)[x2] > edge_threshold)
 */
 
 #define EDGE
+/**
+ * edgelet的大致检测流程：
+ * 1. 跳过一些不需要检测特征的block
+ * 2. 检测梯度和canny(在gaussian blur的图像上进行，减小噪声的影响)
+ * 3. 找出每个block中的最强的edge点或者梯度最强的特征
+ * 3.1. 对edgelet_list排序，选出足量的特征
+ * 3.2. 如果edglet_list特征还不够，在对max_grad_list排序，选出足量的特征
+ */
 void EdgeDetector::detect(Frame* frame, const ImgPyr& img_pyr,
                           const double detection_threshold, Features& fts) {
 #ifdef EDGE
@@ -431,6 +459,7 @@ void EdgeDetector::detect(Frame* frame, const ImgPyr& img_pyr,
   cv::Mat grady = cv::Mat::zeros(img_pyr[0].rows, img_pyr[0].cols, CV_32F);
   cv::Mat mag = cv::Mat::zeros(img_pyr[0].rows, img_pyr[0].cols, CV_32F);
 
+  // 检测梯度和canny(在gaussian blur的图像上进行，减小噪声的影响)
   cv::GaussianBlur(img_pyr[0], img, cv::Size(3, 3), 0, 0);
   cv::Scharr(img, gradx, CV_32F, 1, 0, 1 / 32.0);
   cv::Scharr(img, grady, CV_32F, 0, 1, 1 / 32.0);
@@ -508,16 +537,19 @@ void EdgeDetector::detect(Frame* frame, const ImgPyr& img_pyr,
     }
   }
 
+  // 找出每个block中的最强的edge点或者梯度最强的特征
   int num_feature = 240;
   int n = num_feature - fts.size();
   if (n > 0) {
+    // 对edgelet_list排序，选出足量的特征
     sort(edge_list.begin(), edge_list.end());
     int a = (n > edge_list.size()) ? edge_list.size() : n;
     for (int i = 0; i < a; i++)
       fts.push_back(
           new Feature(frame, edge_list[i].xy, edge_list[i].dir, 0));  // edge
 
-    //  if edgelete is not enought, we select the max grad point in each grid
+    // if edgelete is not enought, we select the max grad point in each grid
+    // 如果edglet_list特征还不够，在对max_grad_list排序，选出足量的特征
     n = n - a;
     if (n > 0) {
       sort(maxgrad_list.begin(), maxgrad_list.end());
@@ -527,6 +559,7 @@ void EdgeDetector::detect(Frame* frame, const ImgPyr& img_pyr,
     }
   }
 
+  // 将所有的grid设置为non-occupied
   resetGrid();
 
 #endif

@@ -66,6 +66,7 @@ Feature* Point::findFrameRef(Frame* frame) {
   return NULL;  // no keyframe found
 }
 
+// 删除MapPoint中某一帧的观测
 bool Point::deleteFrameRef(Frame* frame) {
   for (auto it = obs_.begin(), ite = obs_.end(); it != ite; ++it) {
     if ((*it)->frame == frame) {

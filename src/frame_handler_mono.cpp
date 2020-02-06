@@ -380,6 +380,7 @@ FrameHandlerBase::UpdateResult FrameHandlerMono::processFrame() {
   SVO_DEBUG_STREAM("New keyframe selected.");
 
   // new keyframe selected
+  // 给当前帧成功跟踪的特征增加新的观测，存放在Feature::Point::obs_
   for (Features::iterator it = new_frame_->fts_.begin();
        it != new_frame_->fts_.end(); ++it)
     if ((*it)->point != NULL)
@@ -390,7 +391,7 @@ FrameHandlerBase::UpdateResult FrameHandlerMono::processFrame() {
   map_.point_candidates_.addCandidatePointToFrame(new_frame_);
 
 // SVO_DEBUG_STREAM("11111111111111111.");
-// optional bundle adjustment
+// optional bundle adjustment (poses & map)
 #ifdef USE_BUNDLE_ADJUSTMENT
   if (Config::lobaNumIter() > 0) {
     SVO_START_TIMER("local_ba");
@@ -416,6 +417,7 @@ FrameHandlerBase::UpdateResult FrameHandlerMono::processFrame() {
 
   // add former keyframe to update
   // setCoreKfs(3);
+  // 将离当前帧最近的2个关键帧的观测用于depth update
   size_t a = 2;  // 3
   size_t n = std::min(a, overlap_kfs_.size() - 1);
   auto it_frame = overlap_kfs_.begin();
@@ -426,10 +428,14 @@ FrameHandlerBase::UpdateResult FrameHandlerMono::processFrame() {
 
   // if limited number of keyframes, remove the one furthest apart
   if (Config::maxNKfs() > 2 && map_.size() >= Config::maxNKfs()) {
+    // 找出离当前帧最远的关键帧
     FramePtr furthest_frame = map_.getFurthestKeyframe(new_frame_->pos());
+    // 删除seeds_和frame相关联的Seed(Seed表示一个feature在某个关键帧上的depth
+    // filter信息)
     depth_filter_->removeKeyframe(furthest_frame);  // TODO this interrupts the
                                                     // mapper thread, maybe we
                                                     // can solve this better
+    // 删除map中的furthest_frame信息
     map_.safeDeleteFrame(furthest_frame);
   }
 

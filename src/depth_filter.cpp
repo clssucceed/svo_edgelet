@@ -101,32 +101,44 @@ void DepthFilter::addKeyframe(FramePtr frame, double depth_mean,
     initializeSeeds(frame);
 }
 
+// 检测新特征并且为新特征初始化depth filter(Seed)
 void DepthFilter::initializeSeeds(FramePtr frame) {
+  // 如果frame已经执行过DepthFilter::initializeSeeds，则直接返回，
+  // 确保每个frame只执行一次DepthFilter::initializeSeeds
   if (frame->have_initializeSeeds) return;
 
+  // TEST: 尝试只使用edge或者corner的效果
+  // 新检测出的corner和edge特征
   Features new_features;
+  // 将已检测出特征的grid设置为occupied，不再检测特征
   feature_detector_->setExistingFeatures(frame->fts_);
+  // 在frame中non-occpupied的grid中检测新的corner特征
   feature_detector_->detect(frame.get(), frame->img_pyr_,
                             Config::triangMinCornerScore(), new_features);
-
+  // 检测edgelet特征
   edge_detector_->detect(frame.get(), frame->img_pyr_,
                          Config::triangMinCornerScore(), new_features);
 
   // initialize a seed for every new feature
+  // 暂停seeds update
   seeds_updating_halt_ = true;
   lock_t lock(seeds_mut_);  // by locking the updateSeeds function stops
   ++Seed::batch_counter;
 
   // SVO_DEBUG_STREAM("67676767676.");
+  // 利用相邻相似原理为每个新检测的特征初始化depth,以及new Seed加入到seeds_中
   std::for_each(new_features.begin(), new_features.end(), [&](Feature* ftr) {
     // seeds_.push_back(Seed(ftr, new_keyframe_mean_depth_,
     // new_keyframe_min_depth_));
 
     // hyj  fix code : useing neighbouring fts to init the seeds depth
+    // 找出离当前新检测特征x最临近（image
+    // plane）的跟踪成功的特征y，并且x.depth=y.depth
     double dist_min(100), z(new_keyframe_mean_depth_);
     for (auto it = frame->fts_.begin(), ite = frame->fts_.end(); it != ite;
          ++it) {
       if ((*it)->point != NULL) {
+        // 新检测特征和跟踪成功特征之间的距离
         Vector2d dist = (ftr->px - (*it)->px);
         if (dist.norm() < dist_min) {
           dist_min = dist.norm();
@@ -137,21 +149,26 @@ void DepthFilter::initializeSeeds(FramePtr frame) {
     if (dist_min < 70)
       seeds_.push_back(Seed(ftr, z, new_keyframe_min_depth_));
     else
+      // 异常处理:
+      // 如果没有比较临近的特征，mean_depth就设置为new_keyframe_mean_depth_
       seeds_.push_back(
           Seed(ftr, new_keyframe_mean_depth_, new_keyframe_min_depth_));
-
   });
 
   // SVO_DEBUG_STREAM("68686868686.");
   if (options_.verbose)
     SVO_INFO_STREAM("DepthFilter: Initialized " << new_features.size()
                                                 << " new seeds");
+  // 打开seeds update
   seeds_updating_halt_ = false;
 
   frame->have_initializeSeeds = true;
 }
 
+// 删除seeds_和frame相关联的Seed
+// frame: 需要被删除的关键帧
 void DepthFilter::removeKeyframe(FramePtr frame) {
+  // 删除关键帧之前需要先将seed update暂停
   seeds_updating_halt_ = true;
   lock_t lock(seeds_mut_);
   list<Seed>::iterator it = seeds_.begin();
@@ -165,6 +182,7 @@ void DepthFilter::removeKeyframe(FramePtr frame) {
       ++it;
   }
   // SVO_DEBUG_STREAM("77777777777.");
+  // 删除关键帧观测之后还需要将seed update重启
   seeds_updating_halt_ = false;
 }
 

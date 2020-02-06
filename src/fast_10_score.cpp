@@ -14,6 +14,9 @@ static inline bool test_gt_set(int a, int b, int& min_diff) {
   return 0;
 }
 
+// cach0: center pixel of fast corner
+// offset[]: 16　pixel around center pixel (a circle)
+// b: threshold
 inline int fast_corner_score_10(const fast_byte* cache_0, const int offset[],
                                 int b) {
   b++;
@@ -3216,6 +3219,7 @@ inline int fast_corner_score_10(const fast_byte* cache_0, const int offset[],
   return b - 1;
 }
 
+// return fast score: 16bit string
 void fast_corner_score_10(const fast_byte* img, const int img_stride,
                           const std::vector<fast_xy>& corners,
                           const int threshold, std::vector<int>& scores) {
@@ -3233,6 +3237,7 @@ void fast_corner_score_10(const fast_byte* img, const int img_stride,
         img + corners[n].y * img_stride + corners[n].x, pixel, threshold);
 }
 
+// shi-tomas score: min eigen value
 float shiTomasiScore(const cv::Mat& img, int u, int v) {
   assert(img.type() == CV_8UC1);
 
@@ -3273,4 +3278,4 @@ float shiTomasiScore(const cv::Mat& img, int u, int v) {
   return 0.5 * (dXX + dYY -
                 sqrt((dXX + dYY) * (dXX + dYY) - 4 * (dXX * dYY - dXY * dXY)));
 }
-}  // namespace Fast
+}  // namespace fast

@@ -76,7 +76,7 @@ void Frame::setKeyPoints() {
     if (key_pts_[i] != NULL)
       if (key_pts_[i]->point == NULL) key_pts_[i] = NULL;
 
-  // 遍历所有特征找出最边界的4个和最中心的一个
+  // 遍历当前帧所有特征找出最边界的4个和最中心的一个
   std::for_each(fts_.begin(), fts_.end(), [&](Feature* ftr) {
     if (ftr->point != NULL) checkKeyPoints(ftr);
   });
