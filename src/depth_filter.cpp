@@ -116,8 +116,8 @@ void DepthFilter::initializeSeeds(FramePtr frame) {
   feature_detector_->detect(frame.get(), frame->img_pyr_,
                             Config::triangMinCornerScore(), new_features);
   // 检测edgelet特征
-  edge_detector_->detect(frame.get(), frame->img_pyr_,
-                         Config::triangMinCornerScore(), new_features);
+  // edge_detector_->detect(frame.get(), frame->img_pyr_,
+  //                        Config::triangMinCornerScore(), new_features);
 
   // initialize a seed for every new feature
   // 暂停seeds update
