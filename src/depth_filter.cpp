@@ -123,6 +123,7 @@ void DepthFilter::initializeSeeds(FramePtr frame) {
   // 暂停seeds update
   seeds_updating_halt_ = true;
   lock_t lock(seeds_mut_);  // by locking the updateSeeds function stops
+  // new Seed之前batch_counter自增1
   ++Seed::batch_counter;
 
   // SVO_DEBUG_STREAM("67676767676.");
@@ -230,6 +231,7 @@ void DepthFilter::updateSeeds(FramePtr frame) {
 
   const double focal_length = frame->cam_->errorMultiplier2();
   double px_noise = 1.0;
+  // Question: law of chord
   double px_error_angle =
       atan(px_noise / (2.0 * focal_length)) * 2.0;  // law of chord (sehnensatz)
 
@@ -240,7 +242,9 @@ void DepthFilter::updateSeeds(FramePtr frame) {
     if (seeds_updating_halt_) return;
 
     // check if seed is not already too old
+    // 近似等于该Seed对象从生成到当前总共经历了几个关键帧（即Seed对象的存活时间）
     if ((Seed::batch_counter - it->batch_id) > options_.max_n_kfs) {
+      // 如果seed太老，直接删除
       it = seeds_.erase(it);
       continue;
     }
@@ -256,6 +260,8 @@ void DepthFilter::updateSeeds(FramePtr frame) {
     */
     // check if point is visible in the current image
     SE3 T_ref_cur = it->ftr->frame->T_f_w_ * frame->T_f_w_.inverse();
+    // 根据depth filter估计的inverse depth以及观测的bearing
+    // vector和帧间位姿获取当前帧3d点坐标
     const Vector3d xyz_f(T_ref_cur.inverse() * (1.0 / it->mu * it->ftr->f));
     if (xyz_f.z() < 0.0) {
       ++it;  // behind the camera
@@ -282,6 +288,7 @@ void DepthFilter::updateSeeds(FramePtr frame) {
 
     // compute tau
     double tau = computeTau(T_ref_cur, it->ftr->f, z, px_error_angle);
+    // 1pixel能够导致的最大的逆深度误差(0.5是因为括号中是最大逆深度和最小逆深度的插值)
     double tau_inverse =
         0.5 * (1.0 / max(0.0000001, z - tau) - 1.0 / (z + tau));
 
@@ -289,18 +296,21 @@ void DepthFilter::updateSeeds(FramePtr frame) {
     updateSeed(1. / z, tau_inverse * tau_inverse, &*it);
     ++n_updates;
 
+    // Question: 这一策略在svo具体如何起作用还没有理清楚
     if (frame->isKeyframe()) {
       // The feature detector should not initialize new seeds close to this
       // location
       feature_detector_->setGridOccpuancy(matcher_.px_cur_);
     }
 
+    // 如果当前Seed对应edgelet特征，更新其grad信息
     if (it->ftr->type == Feature::EDGELET) {
       it->ftr->grad_cur_ = (matcher_.A_cur_ref_ * it->ftr->grad).normalized();
     }
 
     // if the seed has converged, we initialize a new candidate point and remove
     // the seed
+    // 当Seed的inverse depth variance小于某个阈值时即认为收敛
     if (sqrt(it->sigma2) <
         it->z_range / options_.seed_convergence_sigma2_thresh) {
       assert(it->ftr->point == NULL);  // TODO this should not happen anymore
@@ -327,6 +337,7 @@ void DepthFilter::updateSeeds(FramePtr frame) {
       else
       */
       {
+        // MapPointCandidates::newCandidatePoint
         seed_converged_cb_(point, it->sigma2);  // put in candidate list
       }
       it = seeds_.erase(it);
@@ -392,15 +403,23 @@ void DepthFilter::updateSeed(const float x, const float tau2, Seed* seed) {
 double DepthFilter::computeTau(const SE3& T_ref_cur, const Vector3d& f,
                                const double z, const double px_error_angle) {
   Vector3d t(T_ref_cur.translation());
+  // 在ref坐标系下：当前帧原点和3d点之间的向量
   Vector3d a = f * z - t;
   double t_norm = t.norm();
   double a_norm = a.norm();
-  double alpha = acos(f.dot(t) / t_norm);             // dot product
+  // f和t的夹角
+  double alpha = acos(f.dot(t) / t_norm);  // dot product
+  // a和t的夹角
   double beta = acos(a.dot(-t) / (t_norm * a_norm));  // dot product
+  // 考虑了噪声算出的最大beta
   double beta_plus = beta + px_error_angle;
+  // 3d点在ref和cur之间的视差角(考虑了噪声,算出的最小gamma)
   double gamma_plus = PI - alpha - beta_plus;  // triangle angles sum to PI
+  // 考虑了噪声能够算出的最大的z
   double z_plus = t_norm * sin(beta_plus) / sin(gamma_plus);  // law of sines
-  return (z_plus - z);                                        // tau
+  // Question: tau的物理含义是什么
+  // 一个pixel的观测误差最多会产生多大的深度估计误差
+  return (z_plus - z);  // tau
 }
 
 }  // namespace svo

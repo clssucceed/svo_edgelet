@@ -36,6 +36,11 @@ class Point;
 struct Seed {
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
+  // 生命周期简述: 每个关键帧进行new
+  // Seed操作之前都会自增1,并且将batch_counter赋值给新构造
+  // 的Seed对象，所以Seed::batch_counter -
+  // 某个Seed对象的batch_id近似等于该Seed对象从
+  // 生成到当前总共经历了几个关键帧（即Seed对象的存活时间）
   static int batch_counter;
   static int seed_counter;
   int batch_id;  //!< Batch id is the id of the keyframe for which the seed was
@@ -47,7 +52,7 @@ struct Seed {
             //! large.
   float b;  //!< b of Beta distribution: When high, probability of outlier is
             //! large.
-  float mu;            //!< Mean of normal distribution.
+  float mu;            //!< Mean of normal distribution.(inverse depth)
   float z_range;       //!< Max range of the possible depth.
   float sigma2;        //!< Variance of normal distribution.
   Matrix2d patch_cov;  //!< Patch covariance in reference image.
